@@ -12,7 +12,7 @@ using Reprository.EF;
 namespace Reprository.EF.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20230419111517_init")]
+    [Migration("20230419164043_init")]
     partial class init
     {
         /// <inheritdoc />

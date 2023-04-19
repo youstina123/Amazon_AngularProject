@@ -100,3 +100,20 @@ C:\Users\M.Essam\Downloads\AppWAPI&Angular\AppWAPI&Angular\WAPIProject\Reprosito
 C:\Users\M.Essam\Downloads\AppWAPI&Angular\AppWAPI&Angular\WAPIProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.csproj.CopyComplete
 C:\Users\M.Essam\Downloads\AppWAPI&Angular\AppWAPI&Angular\WAPIProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.genruntimeconfig.cache
 C:\Users\M.Essam\Downloads\AppWAPI&Angular\AppWAPI&Angular\WAPIProject\Reprository.EF\obj\Debug\net7.0\ref\Reprository.EF.dll
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\bin\Debug\net7.0\Reprository.EF.deps.json
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\bin\Debug\net7.0\Reprository.EF.runtimeconfig.json
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\bin\Debug\net7.0\Reprository.EF.dll
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\bin\Debug\net7.0\Reprository.EF.pdb
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\bin\Debug\net7.0\Reprository.Core.dll
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\bin\Debug\net7.0\Reprository.Core.pdb
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.csproj.AssemblyReference.cache
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.AssemblyInfoInputs.cache
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.AssemblyInfo.cs
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.csproj.CoreCompileInputs.cache
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.csproj.CopyComplete
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.dll
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\refint\Reprository.EF.dll
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.pdb
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.genruntimeconfig.cache
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\ref\Reprository.EF.dll

@@ -16,6 +16,11 @@ namespace Reprository.Core.Interfaces
         IStoreRepository Store { get; }
         IVendorRepository Vendor { get; }
         IProductRepository Product { get; }
+        IMobileRepository Mobile { get; }
+        IBookReprository Book { get; }
+        IClothingRepository Clothing { get; }
+        IComputerRepository Computer { get; }
+        ITVRepository Tv { get; }
 
     }
 }

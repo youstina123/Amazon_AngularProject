@@ -21,6 +21,14 @@ namespace Reprository.EF.Repositories
         public IVendorRepository Vendor { get; private set; }
         public IBaseRepository<Payment> Payment { get; private set; }
 
+        public IMobileRepository Mobile { get; private set; }
+        public IBookReprository Book { get; private set; }
+        public IClothingRepository Clothing { get; private set; }
+
+        public IComputerRepository Computer { get; private set; }
+        public ITVRepository TV { get; private set; }
+
+
         public UnitOfWorkRepository(ApplicationDBContext context)
         {
             this.context = context;
@@ -31,7 +39,13 @@ namespace Reprository.EF.Repositories
             Payment = new BaseRepository<Payment>(this.context);
             //Store = new StoreRepository(this.context);    
             //Vendor = new VendorRepository(this.context);    
-            Product = new ProductRepository(this.context);    
+            Product = new ProductRepository(this.context);
+            Mobile = new MobileReprository(this.context);
+            Book = new BookRepository(this.context);
+            Clothing = new ClothingReprository(this.context);
+            Computer=new ComputerRepository(this.context);
+            TV = new TVRepository(this.context);
+
         }
         public void Complete()
         {

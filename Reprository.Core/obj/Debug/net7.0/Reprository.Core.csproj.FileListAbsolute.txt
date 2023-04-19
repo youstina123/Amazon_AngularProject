@@ -70,3 +70,15 @@ C:\Users\M.Essam\Downloads\AppWAPI&Angular\AppWAPI&Angular\WAPIProject\Reprosito
 C:\Users\M.Essam\Downloads\AppWAPI&Angular\AppWAPI&Angular\WAPIProject\Reprository.Core\obj\Debug\net7.0\refint\Reprository.Core.dll
 C:\Users\M.Essam\Downloads\AppWAPI&Angular\AppWAPI&Angular\WAPIProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.pdb
 C:\Users\M.Essam\Downloads\AppWAPI&Angular\AppWAPI&Angular\WAPIProject\Reprository.Core\obj\Debug\net7.0\ref\Reprository.Core.dll
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\bin\Debug\net7.0\Reprository.Core.deps.json
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\bin\Debug\net7.0\Reprository.Core.dll
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\bin\Debug\net7.0\Reprository.Core.pdb
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.csproj.AssemblyReference.cache
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.AssemblyInfoInputs.cache
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.AssemblyInfo.cs
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.csproj.CoreCompileInputs.cache
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.dll
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\refint\Reprository.Core.dll
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.pdb
+C:\Users\Al Lewaa Company\Desktop\New folder (2)\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\ref\Reprository.Core.dll

@@ -21,6 +21,8 @@ namespace Reprository.Core.Interfaces
         IClothingRepository Clothing { get; }
         IComputerRepository Computer { get; }
         ITVRepository TV { get; }
+        IShoppingCartRepository ShoppingCart { get; }
+        IWishlistRepository Wishlist { get; }
 
     }
 }

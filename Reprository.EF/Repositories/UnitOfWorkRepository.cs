@@ -27,7 +27,8 @@ namespace Reprository.EF.Repositories
 
         public IComputerRepository Computer { get; private set; }
         public ITVRepository TV { get; private set; }
-
+        public IShoppingCartRepository ShoppingCart { get; private set; }
+        public IWishlistRepository Wishlist { get; private set; }
 
         public UnitOfWorkRepository(ApplicationDBContext context)
         {
@@ -45,6 +46,8 @@ namespace Reprository.EF.Repositories
             Clothing = new ClothingReprository(this.context);
             Computer=new ComputerRepository(this.context);
             TV=new TVRepository(this.context);
+            ShoppingCart = new ShoppingCartRepository(this.context);
+            Wishlist = new WishlistRepository(this.context);
         }
         public void Complete()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Reprository.Core.Models
 
         [Key]
         public int Id { get; set; }
+
+        [DefaultValue(false)]
         public bool IsDeleted { get; set; }
 
         [ForeignKey("Customer")]
@@ -20,7 +23,7 @@ namespace Reprository.Core.Models
         public Customer? Customer { get; set; }
 
         [ForeignKey("Order")]
-        public int OrderId { get; set; }
+        public int? OrderId { get; set; }
         public Order? Order { get; set; }
 
         public virtual List<CartItem>? CartItems { get; set; }

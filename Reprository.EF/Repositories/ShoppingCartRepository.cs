@@ -16,5 +16,14 @@ namespace Reprository.EF.Repositories
         {
             this.context = context;
         }
+
+        public int GetCustomerID(string id)
+        {
+            int castomerid = context.shoppingCarts
+                .Where(s => s.CustomerId == id)
+                .Select(c => c.Id).FirstOrDefault();
+
+            return castomerid;
+        }
     }
 }

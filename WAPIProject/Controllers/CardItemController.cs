@@ -24,7 +24,9 @@ namespace WAPIProject.Controllers
 
             if (ModelState.IsValid)
             {
-                var shoppingCart = await unitOfWorkRepository.ShoppingCart.FindAsync(e => e.CustomerId == cardItem.customerId);
+                ShoppingCart shoppingCart = await unitOfWorkRepository
+                    .ShoppingCart
+                    .FindAsync(s => s.CustomerId == cardItem.customerId,null);
                 CartItem item = new CartItem();
                 item.Product_Quantity = cardItem.Product_Quantity;
                 item.MainProductId = cardItem.MainProductId;
@@ -38,11 +40,13 @@ namespace WAPIProject.Controllers
         }
 
         [HttpGet("Getlistofcard")]
-        public async Task<IActionResult> GetlistofCards(string CustomerID)
+        public async Task<IActionResult> GetlistofCardsAsync(string CustomerID)
         {
-            var shoping = await unitOfWorkRepository.ShoppingCart.FindAsync(e => e.CustomerId == CustomerID,new[]{"CartItems"});
-            List<CartItem> cartItems= shoping.CartItems.ToList();
-            return Ok(cartItems);
+            int id=unitOfWorkRepository.ShoppingCart.GetCustomerID(CustomerID);
+
+            return Ok(unitOfWorkRepository
+                .CardItem
+                .FindAll(c => c.ShoppingCartId == id));
         }
     }
     }

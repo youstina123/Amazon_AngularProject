@@ -15,7 +15,6 @@ namespace Reprository.Core.Models
         public int Id { get; set; }  
         public int Product_Quantity { get; set; }
 
-
         [DefaultValue(false)]
         public bool IsDeleted { get; set; }
 

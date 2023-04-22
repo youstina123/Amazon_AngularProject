@@ -4336,24 +4336,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Amoun\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Al Lewaa Company\\Desktop\\New folder (2)\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj",
+      "projectUniqueName": "C:\\Users\\Amoun\\Desktop\\3\\Reprository.EF\\Reprository.EF.csproj",
       "projectName": "Reprository.EF",
-      "projectPath": "C:\\Users\\Al Lewaa Company\\Desktop\\New folder (2)\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj",
-      "packagesPath": "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Al Lewaa Company\\Desktop\\New folder (2)\\Amazon_AngularProject\\Reprository.EF\\obj\\",
+      "projectPath": "C:\\Users\\Amoun\\Desktop\\3\\Reprository.EF\\Reprository.EF.csproj",
+      "packagesPath": "C:\\Users\\Amoun\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Amoun\\Desktop\\3\\Reprository.EF\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Al Lewaa Company\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Amoun\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4367,8 +4362,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Al Lewaa Company\\Desktop\\New folder (2)\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj": {
-              "projectPath": "C:\\Users\\Al Lewaa Company\\Desktop\\New folder (2)\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj"
+            "C:\\Users\\Amoun\\Desktop\\3\\Reprository.Core\\Reprository.Core.csproj": {
+              "projectPath": "C:\\Users\\Amoun\\Desktop\\3\\Reprository.Core\\Reprository.Core.csproj"
             }
           }
         }
@@ -4414,7 +4409,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

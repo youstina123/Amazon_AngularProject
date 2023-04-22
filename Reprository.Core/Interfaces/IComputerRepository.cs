@@ -9,5 +9,9 @@ namespace Reprository.Core.Interfaces
 {
     public interface IComputerRepository:IBaseRepository<Computer>
     {
+        List<Computer> GetByName(string Name);
+        List<Computer> GetByBrandName(string brandName);
+
+        public void DeleteComp(int id);
     }
 }

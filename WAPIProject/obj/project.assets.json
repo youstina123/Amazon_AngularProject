@@ -4838,24 +4838,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Amoun\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Amazon\\Amazon_AngularProject\\WAPIProject\\WAPIProject.csproj",
+      "projectUniqueName": "C:\\Users\\Amoun\\Desktop\\4\\WAPIProject\\WAPIProject.csproj",
       "projectName": "WAPIProject",
-      "projectPath": "F:\\Amazon\\Amazon_AngularProject\\WAPIProject\\WAPIProject.csproj",
-      "packagesPath": "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\",
-      "outputPath": "F:\\Amazon\\Amazon_AngularProject\\WAPIProject\\obj\\",
+      "projectPath": "C:\\Users\\Amoun\\Desktop\\4\\WAPIProject\\WAPIProject.csproj",
+      "packagesPath": "C:\\Users\\Amoun\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Amoun\\Desktop\\4\\WAPIProject\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Al Lewaa Company\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Amoun\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4869,8 +4864,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "F:\\Amazon\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj": {
-              "projectPath": "F:\\Amazon\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj"
+            "C:\\Users\\Amoun\\Desktop\\4\\Reprository.EF\\Reprository.EF.csproj": {
+              "projectPath": "C:\\Users\\Amoun\\Desktop\\4\\Reprository.EF\\Reprository.EF.csproj"
             }
           }
         }
@@ -4923,7 +4918,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -23,6 +23,6 @@ namespace Reprository.Core.Interfaces
         ITVRepository TV { get; }
         IShoppingCartRepository ShoppingCart { get; }
         IWishlistRepository Wishlist { get; }
-
+        ICardItemReposatory CardItem { get; }
     }
 }

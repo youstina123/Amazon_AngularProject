@@ -29,7 +29,7 @@ namespace Reprository.EF.Repositories
         public ITVRepository TV { get; private set; }
         public IShoppingCartRepository ShoppingCart { get; private set; }
         public IWishlistRepository Wishlist { get; private set; }
-
+        public ICardItemReposatory CardItem { get; private set; }
         public UnitOfWorkRepository(ApplicationDBContext context)
         {
             this.context = context;
@@ -48,6 +48,7 @@ namespace Reprository.EF.Repositories
             TV=new TVRepository(this.context);
             ShoppingCart = new ShoppingCartRepository(this.context);
             Wishlist = new WishlistRepository(this.context);
+            CardItem= new CardItemReposatory(this.context);
         }
         public void Complete()
         {

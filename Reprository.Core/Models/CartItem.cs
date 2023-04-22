@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace Reprository.Core.Models
         [Key]
         public int Id { get; set; }  
         public int Product_Quantity { get; set; }
+
+
+        [DefaultValue(false)]
         public bool IsDeleted { get; set; }
 
         [ForeignKey("MainProduct")]

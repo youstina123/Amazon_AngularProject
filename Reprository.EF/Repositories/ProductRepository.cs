@@ -11,8 +11,10 @@ namespace Reprository.EF.Repositories
 {
     public class ProductRepository : BaseRepository<MainProduct>, IProductRepository
     {
+        ApplicationDBContext context;
         public ProductRepository(ApplicationDBContext context) : base(context)
         {
+            this.context = context;
         }
     }
 }

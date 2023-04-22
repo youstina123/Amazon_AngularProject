@@ -37,15 +37,14 @@ namespace Reprository.EF.Repositories
             Customer = new BaseRepository<Customer>(this.context);
             Category = new BaseRepository<Category>(this.context);
             Payment = new BaseRepository<Payment>(this.context);
-            //Store = new StoreRepository(this.context);    
+            Store = new StoreRepository(this.context);    
             //Vendor = new VendorRepository(this.context);    
             Product = new ProductRepository(this.context);
             Mobile = new MobileReprository(this.context);
             Book = new BookRepository(this.context);
             Clothing = new ClothingReprository(this.context);
             Computer=new ComputerRepository(this.context);
-            TV = new TVRepository(this.context);
-
+            TV=new TVRepository(this.context);
         }
         public void Complete()
         {

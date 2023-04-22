@@ -55,6 +55,7 @@ namespace Reprository.EF.Reprositories
 
             return query.SingleOrDefault(criteria);
         }
+       
         public async Task<T> FindAsync(Expression<Func<T, bool>> criteria, string[] includes = null)
         {
             IQueryable<T> query = _context.Set<T>();
@@ -197,9 +198,7 @@ namespace Reprository.EF.Reprositories
 
         public void Delete(T entity)
         {
-            _context.Set<T>().Remove(entity);
-            _context.SaveChanges();
-
+            Update(entity);
         }
         public void DeleteRange(IEnumerable<T> entities)
         {

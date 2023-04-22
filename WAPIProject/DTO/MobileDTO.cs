@@ -1,28 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using Reprository.Core.Models;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Reprository.Core.Models
+namespace WAPIProject.DTO
 {
-    public enum ScreenType
+    public class MobileDTO
     {
-        IPS,
-        OLED,
-        AMOLED,
-        ULTRA_AMOLED
-    }
-    public class Mobile
-    {
-        [Key]
-        [ForeignKey("MainProduct")]
-        public int MainProductId { get; set; }
-        public MainProduct MainProduct { get; set; }
-
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string BrandName { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public decimal? PriceAfterDiscount { get; set; }
+        public int Quantity { get; set; }
+        public Stars RateValue { get; set; }
         public double ScreenSize { get; set; }
         public int RAM { get; set; }
         public int NumSIMCards { get; set; }
@@ -39,11 +29,14 @@ namespace Reprository.Core.Models
         public string? OperatingSystem { get; set; }
         public ScreenType? Screentype { get; set; }
 
-        [DefaultValue(false)]
-        public bool IsDeleted { get; set; }
 
 
+        public int? BrandId { get; set; }
+        public int? CategoryId { get; set; }
+        public int? CartItemId { get; set; }
 
+        public int? ProfitId { get; set; }
 
+        public int? StoreId { get; set; }
     }
 }

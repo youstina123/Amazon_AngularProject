@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Reprository.EF.Repositories
 {
-    public class StoreRepository : BaseRepository<Store>//,IStoreRepository
+    public class StoreRepository : BaseRepository<Store>,IStoreRepository
     {
         ApplicationDBContext context;
         public StoreRepository(ApplicationDBContext context) : base(context)
@@ -22,6 +22,15 @@ namespace Reprository.EF.Repositories
         //    List<Review> reviews = context.Reviews.Where(i => i.IsDeleted == false && i.StoreId == id).OrderByDescending(d => d.Id).Take(8).Include(c => c.customer).ThenInclude(a => a.ApplicationUser).ToList();
         //    return reviews;
         //}
+
+        public int getbyname(string name)
+        {
+            int id=context
+                .Stores
+                .Where(s=>s.Name==name)
+                .Select(s=>s.Id).FirstOrDefault();
+            return id;
+        }
 
     }
 }

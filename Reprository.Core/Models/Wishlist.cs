@@ -11,13 +11,18 @@ namespace Reprository.Core.Models
     public class Wishlist
     {
         [Key]
-        public int Id { get; set; } 
+        public int Id { get; set; }
+        public int Product_Quantity { get; set; }
+
+        [ForeignKey("MainProduct")]
+        public int? MainProductId { get; set; }
+        public MainProduct? MainProduct { get; set; }
         public bool IsDeleted { get; set; }
 
         [ForeignKey("Customer")]
         public string? CustomerId { get; set; }
         public Customer? Customer { get; set; }
 
-        public virtual List<CartItem>? CartItems { get; set; }
+        //public virtual List<CartItem>? CartItems { get; set; }
     }
 }

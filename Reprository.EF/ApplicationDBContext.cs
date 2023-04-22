@@ -4,6 +4,7 @@ using Reprository.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,14 +26,88 @@ namespace Reprository.EF
             base.OnConfiguring(optionsBuilder);
         }
 
-     /*   protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach (var relation in modelBuilder.Model.GetEntityTypes().SelectMany(r => r.GetForeignKeys()))
-            {
-                relation.DeleteBehavior = DeleteBehavior.NoAction;
-            }
+            //foreach (var relation in modelBuilder.Model.GetEntityTypes().SelectMany(r => r.GetForeignKeys()))
+            //{
+            //    relation.DeleteBehavior = DeleteBehavior.NoAction;
+            //}
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<MainProduct>().HasData(new[]
+             {
+                 new MainProduct
+                     {
+                            Id = 1,
+                            Name = "Samsung Galaxy A03",
+                            BrandName="Samsung",
+                            Description="jkjkljkjrijklwjejijijwkr",
+                            Price=3000,
+                            Quantity=500,
+                            RateValue=(Stars)3,
+                            IsDeleted=false,
+                            
+                           
+                     },
 
-        }*/
+                 new MainProduct
+                     {
+                            Id = 2,
+                            Name = "Nokia C31 4G Smartphone",
+                            BrandName="Nokia",
+                            Description="jlkmmd;lqwkdoiwuiedyqhdjoweklfh",
+                            Price=4000,
+                            Quantity=400,
+                            RateValue=(Stars)4,
+                            IsDeleted=false
+                     }
+
+            });
+            modelBuilder.Entity<Mobile>().HasData(new[]
+             {
+                 new Mobile
+                     {
+                          MainProductId=1,
+                            BatteryLife=13,
+                           HasBackCamera=true,
+                            HasFingerprintScanner=true,
+                            HasBluetooth=true,
+                             HasFrontCamera=true,
+                             HasNFC=true,
+                             IsWaterproof=true,
+                             NumberOfCamera=3,
+                             NumSIMCards=3,
+                             RAM=3,
+                             ScreenSize=6.5,
+                            Screentype=ScreenType.IPS,
+                            StorageCapacity=32,
+                            Weight=140,
+                            OperatingSystem="ios"
+
+                     },
+
+                 new Mobile
+                     {
+                            MainProductId=2,
+                            BatteryLife=7,
+                           HasBackCamera=true,
+                            HasFingerprintScanner=true,
+                            HasBluetooth=true,
+                             HasFrontCamera=true,
+                             HasNFC=true,
+                             IsWaterproof=true,
+                             NumberOfCamera=3,
+                             NumSIMCards=3,
+                             RAM=3,
+                             ScreenSize=6.5,
+                            Screentype=ScreenType.IPS,
+                            StorageCapacity=32,
+                            Weight=140,
+                            OperatingSystem="ios"
+                     }
+
+            });
+
+        }
 
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Customer> Customers { get; set; }

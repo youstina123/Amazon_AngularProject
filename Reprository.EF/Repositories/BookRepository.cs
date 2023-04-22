@@ -16,5 +16,12 @@ namespace Reprository.EF.Repositories
         {
             this.context = context;
         }
+        public void DeleteMobile(int id)
+        {
+            Book book = Find(m => m.MainProductId == id, new[] { "MainProduct" });
+            book.MainProduct.IsDeleted = true;
+            book.IsDeleted = true;
+            Update(book);
+        }
     }
 }

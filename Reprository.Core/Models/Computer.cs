@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Reprository.Core.Models
 {
@@ -30,5 +31,8 @@ namespace Reprository.Core.Models
         public bool HasTouchscreen { get; set; }
         public bool HasKeyboard { get; set; }
         public bool HasMouse { get; set; }
+
+        [DefaultValue(false)]
+        public bool IsDeleted { get; set; }
     }
 }

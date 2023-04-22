@@ -9,5 +9,7 @@ namespace Reprository.Core.Interfaces
 {
     public interface IBookReprository:IBaseRepository<Book>
     {
+        public void DeleteMobile(int id);
+
     }
 }

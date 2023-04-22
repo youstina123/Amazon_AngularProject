@@ -9,6 +9,8 @@ namespace Reprository.Core.Interfaces
 {
     public interface IStoreRepository : IBaseRepository<Store>
     {
-        List<Review> getReviews(int id);
+        // List<Review> getReviews(int id);
+        public int getbyname(string name);
+
     }
 }

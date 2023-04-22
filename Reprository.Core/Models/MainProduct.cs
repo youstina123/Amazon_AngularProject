@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
@@ -17,9 +18,10 @@ namespace Reprository.Core.Models
         public string ?BrandName { get; set; }
         public string ?Description { get; set; }
         public decimal Price { get; set; }
-        public decimal PriceAfterDiscount { get; set; }
+        public decimal? PriceAfterDiscount { get; set; }
         public int Quantity { get; set; }
         public Stars RateValue { get; set; }
+        [DefaultValue(false)]
         public bool IsDeleted { get; set; }
 
 
@@ -36,11 +38,11 @@ namespace Reprository.Core.Models
         public CartItem? CartItem { get; set; }
 
         [ForeignKey("Profit")]
-        public int ProfitId { get; set; }
+        public int? ProfitId { get; set; }
         public Profit? Profit { get; set; }
 
         [ForeignKey("Store")]
-        public int StoreId { get; set; }
+        public int? StoreId { get; set; }
         public Store? Store { get; set; }
 
         public List<Review>? Reviews { get; set; }

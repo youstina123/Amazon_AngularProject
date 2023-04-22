@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Reprository.Core.Models
 {
@@ -26,5 +27,7 @@ namespace Reprository.Core.Models
         public string? Edition { get; set; }       
         public string? Type { get; set; }
         public string? Awards { get; set; }
+        [DefaultValue(false)]
+        public bool IsDeleted { get; set; }
     }
 }

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Reprository.EF.Migrations
 {
     /// <inheritdoc />
@@ -193,7 +195,8 @@ namespace Reprository.EF.Migrations
                     Language = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Edition = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Awards = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Awards = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -225,8 +228,7 @@ namespace Reprository.EF.Migrations
                     Product_Quantity = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     MainProductId = table.Column<int>(type: "int", nullable: true),
-                    ShoppingCartId = table.Column<int>(type: "int", nullable: true),
-                    WishlistId = table.Column<int>(type: "int", nullable: true)
+                    ShoppingCartId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -258,7 +260,8 @@ namespace Reprository.EF.Migrations
                     Style = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Season = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ManufacturerCountry = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SleeveStyle = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    SleeveStyle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -284,7 +287,8 @@ namespace Reprository.EF.Migrations
                     CountryOfOrigin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HasTouchscreen = table.Column<bool>(type: "bit", nullable: false),
                     HasKeyboard = table.Column<bool>(type: "bit", nullable: false),
-                    HasMouse = table.Column<bool>(type: "bit", nullable: false)
+                    HasMouse = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -309,25 +313,6 @@ namespace Reprository.EF.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Wishlists",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Wishlists", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Wishlists_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
-                        principalColumn: "ApplicationUserId");
                 });
 
             migrationBuilder.CreateTable(
@@ -389,7 +374,8 @@ namespace Reprository.EF.Migrations
                     HasBluetooth = table.Column<bool>(type: "bit", nullable: false),
                     IsWaterproof = table.Column<bool>(type: "bit", nullable: false),
                     OperatingSystem = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Screentype = table.Column<int>(type: "int", nullable: true)
+                    Screentype = table.Column<int>(type: "int", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -485,15 +471,15 @@ namespace Reprository.EF.Migrations
                     BrandName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PriceAfterDiscount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PriceAfterDiscount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     RateValue = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     BrandId = table.Column<int>(type: "int", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: true),
                     CartItemId = table.Column<int>(type: "int", nullable: true),
-                    ProfitId = table.Column<int>(type: "int", nullable: false),
-                    StoreId = table.Column<int>(type: "int", nullable: false)
+                    ProfitId = table.Column<int>(type: "int", nullable: true),
+                    StoreId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -584,7 +570,8 @@ namespace Reprository.EF.Migrations
                     HasEthernet = table.Column<bool>(type: "bit", nullable: false),
                     IsCurved = table.Column<bool>(type: "bit", nullable: false),
                     HasBluetooth = table.Column<bool>(type: "bit", nullable: false),
-                    HasWIFI = table.Column<bool>(type: "bit", nullable: false)
+                    HasWIFI = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -595,6 +582,32 @@ namespace Reprository.EF.Migrations
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Wishlists",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Product_Quantity = table.Column<int>(type: "int", nullable: false),
+                    MainProductId = table.Column<int>(type: "int", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Wishlists", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Wishlists_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "ApplicationUserId");
+                    table.ForeignKey(
+                        name: "FK_Wishlists_Products_MainProductId",
+                        column: x => x.MainProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -685,6 +698,24 @@ namespace Reprository.EF.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "BrandId", "BrandName", "CartItemId", "CategoryId", "Description", "IsDeleted", "Name", "Price", "PriceAfterDiscount", "ProfitId", "Quantity", "RateValue", "StoreId" },
+                values: new object[,]
+                {
+                    { 1, null, "Samsung", null, null, "jkjkljkjrijklwjejijijwkr", false, "Samsung Galaxy A03", 3000m, null, null, 500, 3, null },
+                    { 2, null, "Nokia", null, null, "jlkmmd;lqwkdoiwuiedyqhdjoweklfh", false, "Nokia C31 4G Smartphone", 4000m, null, null, 400, 4, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Mobiles",
+                columns: new[] { "MainProductId", "BatteryLife", "HasBackCamera", "HasBluetooth", "HasFingerprintScanner", "HasFrontCamera", "HasNFC", "IsDeleted", "IsWaterproof", "NumSIMCards", "NumberOfCamera", "OperatingSystem", "RAM", "ScreenSize", "Screentype", "StorageCapacity", "Weight" },
+                values: new object[,]
+                {
+                    { 1, 13, true, true, true, true, true, false, true, 3, 3, "ios", 3, 6.5, 0, 32, 140 },
+                    { 2, 7, true, true, true, true, true, false, true, 3, 3, "ios", 3, 6.5, 0, 32, 140 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -738,11 +769,6 @@ namespace Reprository.EF.Migrations
                 name: "IX_CartItems_ShoppingCartId",
                 table: "CartItems",
                 column: "ShoppingCartId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CartItems_WishlistId",
-                table: "CartItems",
-                column: "WishlistId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_StoreId",
@@ -904,6 +930,11 @@ namespace Reprository.EF.Migrations
                 table: "Wishlists",
                 column: "CustomerId");
 
+            migrationBuilder.CreateIndex(
+                name: "IX_Wishlists_MainProductId",
+                table: "Wishlists",
+                column: "MainProductId");
+
             migrationBuilder.AddForeignKey(
                 name: "FK_Books_Products_MainProductId",
                 table: "Books",
@@ -924,13 +955,6 @@ namespace Reprository.EF.Migrations
                 table: "CartItems",
                 column: "MainProductId",
                 principalTable: "Products",
-                principalColumn: "Id");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_CartItems_Wishlists_WishlistId",
-                table: "CartItems",
-                column: "WishlistId",
-                principalTable: "Wishlists",
                 principalColumn: "Id");
 
             migrationBuilder.AddForeignKey(
@@ -1036,16 +1060,14 @@ namespace Reprository.EF.Migrations
                 table: "Products",
                 column: "ProfitId",
                 principalTable: "Profits",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.NoAction);
+                principalColumn: "Id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Products_Stores_StoreId",
                 table: "Products",
                 column: "StoreId",
                 principalTable: "Stores",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.NoAction);
+                principalColumn: "Id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Profits_Vendors_VendorId",
@@ -1091,12 +1113,12 @@ namespace Reprository.EF.Migrations
                 table: "Profits");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Stores_Categories_CategoryId",
-                table: "Stores");
+                name: "FK_Wishlists_Products_MainProductId",
+                table: "Wishlists");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Customers_Wishlists_WishlistId",
-                table: "Customers");
+                name: "FK_Stores_Categories_CategoryId",
+                table: "Stores");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Customers_shoppingCarts_ShoppingCartId",
@@ -1113,6 +1135,10 @@ namespace Reprository.EF.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_Vendors_Stores_StoreId",
                 table: "Vendors");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Customers_Wishlists_WishlistId",
+                table: "Customers");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Orders_Customers_CustomerId",
@@ -1190,9 +1216,6 @@ namespace Reprository.EF.Migrations
                 name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Wishlists");
-
-            migrationBuilder.DropTable(
                 name: "shoppingCarts");
 
             migrationBuilder.DropTable(
@@ -1203,6 +1226,9 @@ namespace Reprository.EF.Migrations
 
             migrationBuilder.DropTable(
                 name: "Vendors");
+
+            migrationBuilder.DropTable(
+                name: "Wishlists");
 
             migrationBuilder.DropTable(
                 name: "Customers");

@@ -265,6 +265,9 @@ namespace Reprository.EF.Migrations
                     b.Property<string>("Edition")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Language")
                         .HasColumnType("nvarchar(max)");
 
@@ -336,16 +339,11 @@ namespace Reprository.EF.Migrations
                     b.Property<int?>("ShoppingCartId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WishlistId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("MainProductId");
 
                     b.HasIndex("ShoppingCartId");
-
-                    b.HasIndex("WishlistId");
 
                     b.ToTable("CartItems");
                 });
@@ -382,6 +380,9 @@ namespace Reprository.EF.Migrations
 
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ManufacturerCountry")
                         .HasColumnType("nvarchar(max)");
@@ -424,6 +425,9 @@ namespace Reprository.EF.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("HasTouchscreen")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Material")
@@ -580,10 +584,10 @@ namespace Reprository.EF.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("PriceAfterDiscount")
+                    b.Property<decimal?>("PriceAfterDiscount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProfitId")
+                    b.Property<int?>("ProfitId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -592,7 +596,7 @@ namespace Reprository.EF.Migrations
                     b.Property<int>("RateValue")
                         .HasColumnType("int");
 
-                    b.Property<int>("StoreId")
+                    b.Property<int?>("StoreId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -608,6 +612,30 @@ namespace Reprository.EF.Migrations
                     b.HasIndex("StoreId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BrandName = "Samsung",
+                            Description = "jkjkljkjrijklwjejijijwkr",
+                            IsDeleted = false,
+                            Name = "Samsung Galaxy A03",
+                            Price = 3000m,
+                            Quantity = 500,
+                            RateValue = 3
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BrandName = "Nokia",
+                            Description = "jlkmmd;lqwkdoiwuiedyqhdjoweklfh",
+                            IsDeleted = false,
+                            Name = "Nokia C31 4G Smartphone",
+                            Price = 4000m,
+                            Quantity = 400,
+                            RateValue = 4
+                        });
                 });
 
             modelBuilder.Entity("Reprository.Core.Models.Mobile", b =>
@@ -631,6 +659,9 @@ namespace Reprository.EF.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("HasNFC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsWaterproof")
@@ -663,6 +694,48 @@ namespace Reprository.EF.Migrations
                     b.HasKey("MainProductId");
 
                     b.ToTable("Mobiles");
+
+                    b.HasData(
+                        new
+                        {
+                            MainProductId = 1,
+                            BatteryLife = 13,
+                            HasBackCamera = true,
+                            HasBluetooth = true,
+                            HasFingerprintScanner = true,
+                            HasFrontCamera = true,
+                            HasNFC = true,
+                            IsDeleted = false,
+                            IsWaterproof = true,
+                            NumSIMCards = 3,
+                            NumberOfCamera = 3,
+                            OperatingSystem = "ios",
+                            RAM = 3,
+                            ScreenSize = 6.5,
+                            Screentype = 0,
+                            StorageCapacity = 32,
+                            Weight = 140
+                        },
+                        new
+                        {
+                            MainProductId = 2,
+                            BatteryLife = 7,
+                            HasBackCamera = true,
+                            HasBluetooth = true,
+                            HasFingerprintScanner = true,
+                            HasFrontCamera = true,
+                            HasNFC = true,
+                            IsDeleted = false,
+                            IsWaterproof = true,
+                            NumSIMCards = 3,
+                            NumberOfCamera = 3,
+                            OperatingSystem = "ios",
+                            RAM = 3,
+                            ScreenSize = 6.5,
+                            Screentype = 0,
+                            StorageCapacity = 32,
+                            Weight = 140
+                        });
                 });
 
             modelBuilder.Entity("Reprository.Core.Models.Order", b =>
@@ -950,6 +1023,9 @@ namespace Reprository.EF.Migrations
                     b.Property<bool>("IsCurved")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsSmartTV")
                         .HasColumnType("bit");
 
@@ -1005,9 +1081,17 @@ namespace Reprository.EF.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("MainProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Product_Quantity")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("MainProductId");
 
                     b.ToTable("Wishlists");
                 });
@@ -1103,10 +1187,6 @@ namespace Reprository.EF.Migrations
                     b.HasOne("Reprository.Core.Models.ShoppingCart", "ShoppingCart")
                         .WithMany("CartItems")
                         .HasForeignKey("ShoppingCartId");
-
-                    b.HasOne("Reprository.Core.Models.Wishlist", null)
-                        .WithMany("CartItems")
-                        .HasForeignKey("WishlistId");
 
                     b.Navigation("MainProduct");
 
@@ -1217,15 +1297,11 @@ namespace Reprository.EF.Migrations
 
                     b.HasOne("Reprository.Core.Models.Profit", "Profit")
                         .WithMany()
-                        .HasForeignKey("ProfitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProfitId");
 
                     b.HasOne("Reprository.Core.Models.Store", "Store")
                         .WithMany("MainProduct")
-                        .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StoreId");
 
                     b.Navigation("Brand");
 
@@ -1424,7 +1500,13 @@ namespace Reprository.EF.Migrations
                         .WithMany()
                         .HasForeignKey("CustomerId");
 
+                    b.HasOne("Reprository.Core.Models.MainProduct", "MainProduct")
+                        .WithMany()
+                        .HasForeignKey("MainProductId");
+
                     b.Navigation("Customer");
+
+                    b.Navigation("MainProduct");
                 });
 
             modelBuilder.Entity("Reprository.Core.Models.Admin", b =>
@@ -1485,11 +1567,6 @@ namespace Reprository.EF.Migrations
                     b.Navigation("discounts");
 
                     b.Navigation("profits");
-                });
-
-            modelBuilder.Entity("Reprository.Core.Models.Wishlist", b =>
-                {
-                    b.Navigation("CartItems");
                 });
 #pragma warning restore 612, 618
         }

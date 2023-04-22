@@ -20,7 +20,7 @@ namespace Reprository.Core.Interfaces
         IBookReprository Book { get; }
         IClothingRepository Clothing { get; }
         IComputerRepository Computer { get; }
-        ITVRepository Tv { get; }
+        ITVRepository TV { get; }
 
     }
 }

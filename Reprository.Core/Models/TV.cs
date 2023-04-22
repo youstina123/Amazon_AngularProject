@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Reprository.Core.Models
 {
@@ -27,6 +28,8 @@ namespace Reprository.Core.Models
         public bool IsCurved { get; set; }
         public bool HasBluetooth { get; set; }
         public bool HasWIFI { get; set; }
-        
+        [DefaultValue(false)]
+        public bool IsDeleted { get; set; }
+
     }
 }

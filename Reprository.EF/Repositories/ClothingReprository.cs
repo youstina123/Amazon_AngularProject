@@ -12,7 +12,7 @@ namespace Reprository.EF.Repositories
     public class ClothingReprository:BaseRepository<Clothing>,IClothingRepository
     {
         ApplicationDBContext context;
-        public MobileReprository(ApplicationDBContext context) : base(context)
+        public ClothingReprository(ApplicationDBContext context) : base(context)
         {
             this.context = context;
         }

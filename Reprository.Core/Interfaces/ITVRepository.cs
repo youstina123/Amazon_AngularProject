@@ -9,5 +9,6 @@ namespace Reprository.Core.Interfaces
 {
     public interface ITVRepository:IBaseRepository<TV>
     {
+        public void DeleteMobile(int id);
     }
 }

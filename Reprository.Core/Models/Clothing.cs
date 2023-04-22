@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Reprository.Core.Models
 {
@@ -21,6 +22,9 @@ namespace Reprository.Core.Models
         public string? Season { get; set; }
         public string? ManufacturerCountry { get; set; }
         public string? SleeveStyle { get; set; }
-      
+
+        [DefaultValue(false)]
+        public bool IsDeleted { get; set; }
+
     }
 }

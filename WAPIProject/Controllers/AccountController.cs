@@ -44,6 +44,10 @@ namespace WAPIProject.Controllers
                     Customer customer = new Customer();
                     customer.ApplicationUserId = userModel.Id;
                     unitOfWorkRepository.Customer.Add(customer);
+
+                    ShoppingCart shoppingCart = new ShoppingCart();
+                    shoppingCart.CustomerId = customer.ApplicationUserId;
+                    unitOfWorkRepository.ShoppingCart.Add(shoppingCart);
                     return Ok("Created Success");
                 }
                 else

@@ -4,6 +4,7 @@ using Reprository.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,9 @@ namespace Reprository.EF
             //{
             //    relation.DeleteBehavior = DeleteBehavior.NoAction;
             //}
+
+            
+
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<MainProduct>().HasData(new[]
              {

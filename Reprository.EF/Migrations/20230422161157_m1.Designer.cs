@@ -12,8 +12,8 @@ using Reprository.EF;
 namespace Reprository.EF.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20230422121002_init")]
-    partial class init
+    [Migration("20230422161157_m1")]
+    partial class m1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -473,10 +473,10 @@ namespace Reprository.EF.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ShoppingCartId")
+                    b.Property<int?>("ShoppingCartId")
                         .HasColumnType("int");
 
-                    b.Property<int>("WishlistId")
+                    b.Property<int?>("WishlistId")
                         .HasColumnType("int");
 
                     b.HasKey("ApplicationUserId");
@@ -939,7 +939,7 @@ namespace Reprository.EF.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -1237,15 +1237,11 @@ namespace Reprository.EF.Migrations
 
                     b.HasOne("Reprository.Core.Models.ShoppingCart", "ShoppingCart")
                         .WithMany()
-                        .HasForeignKey("ShoppingCartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ShoppingCartId");
 
                     b.HasOne("Reprository.Core.Models.Wishlist", "Wishlist")
                         .WithMany()
-                        .HasForeignKey("WishlistId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WishlistId");
 
                     b.Navigation("ApplicationUser");
 
@@ -1439,9 +1435,7 @@ namespace Reprository.EF.Migrations
 
                     b.HasOne("Reprository.Core.Models.Order", "Order")
                         .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderId");
 
                     b.Navigation("Customer");
 

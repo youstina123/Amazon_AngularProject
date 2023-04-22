@@ -17,11 +17,11 @@ namespace Reprository.Core.Models
         public bool IsDeleted { get; set; }
 
         [ForeignKey("Wishlist")]
-        public int WishlistId { get; set; }
+        public int? WishlistId { get; set; }
         public Wishlist ?Wishlist { get; set; }
 
         [ForeignKey("ShoppingCart")]
-        public int ShoppingCartId { get; set; }
+        public int? ShoppingCartId { get; set; }
         public ShoppingCart ?ShoppingCart { get; set; }
 
         public  List<Payment>? Payments { get; set; }

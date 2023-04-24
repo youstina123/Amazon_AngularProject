@@ -9,6 +9,7 @@ using Reprository.Core.Models;
 using Reprository.EF;
 using Reprository.EF.Repositories;
 using System.Text;
+using WAPIProject.MyHub;
 
 namespace WAPIProject
 {
@@ -16,6 +17,7 @@ namespace WAPIProject
     {
         public static void Main(string[] args)
         {
+            
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<ApplicationDBContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Connection"),
@@ -24,7 +26,7 @@ namespace WAPIProject
          
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDBContext>();
-
+            builder.Services.AddSignalR();
             builder.Services.Configure<SmsVerification>(builder.Configuration.GetSection("SMS"));
             builder.Services.AddTransient<ISmsSender, SmsSenderRepository>();
 
@@ -67,7 +69,7 @@ namespace WAPIProject
             }
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.MapHub<commentHub>("/comment");
 
             app.MapControllers();
 

@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Reprository.EF\Reprository.EF.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

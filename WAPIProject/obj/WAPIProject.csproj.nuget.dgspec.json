@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Amazon2\\Amazon_AngularProject\\WAPIProject\\WAPIProject.csproj": {}
+    "C:\\Users\\Amoun\\Desktop\\8\\WAPIProject\\WAPIProject.csproj": {}
   },
   "projects": {
-    "F:\\Amazon2\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj": {
+    "C:\\Users\\Amoun\\Desktop\\8\\Reprository.Core\\Reprository.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Amazon2\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.Core\\Reprository.Core.csproj",
         "projectName": "Reprository.Core",
-        "projectPath": "F:\\Amazon2\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj",
-        "packagesPath": "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\",
-        "outputPath": "F:\\Amazon2\\Amazon_AngularProject\\Reprository.Core\\obj\\",
+        "projectPath": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.Core\\Reprository.Core.csproj",
+        "packagesPath": "C:\\Users\\Amoun\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Al Lewaa Company\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Amoun\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -69,25 +65,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Amazon2\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj": {
+    "C:\\Users\\Amoun\\Desktop\\8\\Reprository.EF\\Reprository.EF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Amazon2\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj",
+        "projectUniqueName": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.EF\\Reprository.EF.csproj",
         "projectName": "Reprository.EF",
-        "projectPath": "F:\\Amazon2\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj",
-        "packagesPath": "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\",
-        "outputPath": "F:\\Amazon2\\Amazon_AngularProject\\Reprository.EF\\obj\\",
+        "projectPath": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.EF\\Reprository.EF.csproj",
+        "packagesPath": "C:\\Users\\Amoun\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.EF\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Al Lewaa Company\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Amoun\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -101,8 +93,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\Amazon2\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj": {
-                "projectPath": "F:\\Amazon2\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj"
+              "C:\\Users\\Amoun\\Desktop\\8\\Reprository.Core\\Reprository.Core.csproj": {
+                "projectPath": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.Core\\Reprository.Core.csproj"
               }
             }
           }
@@ -148,25 +140,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Amazon2\\Amazon_AngularProject\\WAPIProject\\WAPIProject.csproj": {
+    "C:\\Users\\Amoun\\Desktop\\8\\WAPIProject\\WAPIProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Amazon2\\Amazon_AngularProject\\WAPIProject\\WAPIProject.csproj",
+        "projectUniqueName": "C:\\Users\\Amoun\\Desktop\\8\\WAPIProject\\WAPIProject.csproj",
         "projectName": "WAPIProject",
-        "projectPath": "F:\\Amazon2\\Amazon_AngularProject\\WAPIProject\\WAPIProject.csproj",
-        "packagesPath": "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\",
-        "outputPath": "F:\\Amazon2\\Amazon_AngularProject\\WAPIProject\\obj\\",
+        "projectPath": "C:\\Users\\Amoun\\Desktop\\8\\WAPIProject\\WAPIProject.csproj",
+        "packagesPath": "C:\\Users\\Amoun\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Amoun\\Desktop\\8\\WAPIProject\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Al Lewaa Company\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Amoun\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -180,8 +168,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\Amazon2\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj": {
-                "projectPath": "F:\\Amazon2\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj"
+              "C:\\Users\\Amoun\\Desktop\\8\\Reprository.EF\\Reprository.EF.csproj": {
+                "projectPath": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.EF\\Reprository.EF.csproj"
               }
             }
           }
@@ -234,7 +222,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

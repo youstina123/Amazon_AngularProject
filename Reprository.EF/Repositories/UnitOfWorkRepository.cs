@@ -33,7 +33,7 @@ namespace Reprository.EF.Repositories
         public IWishlistRepository Wishlist { get; private set; }
         public ICardItemReposatory CardItem { get; private set; }
         public IBaseRepository<Order> Order { get; private set; }
-
+        public IBaseRepository<Review> Review { get; private set; }
         public IAdminRepository Admin { get; private set; }
         public UnitOfWorkRepository(ApplicationDBContext context)
         {
@@ -58,6 +58,7 @@ namespace Reprository.EF.Repositories
             Order=new BaseRepository<Order>(this.context);
             Admin=new AdminRepository(this.context);
             Profit=new BaseRepository<Profit>(this.context);
+            Review= new BaseRepository<Review>(this.context);
         }
         public void Complete()
         {

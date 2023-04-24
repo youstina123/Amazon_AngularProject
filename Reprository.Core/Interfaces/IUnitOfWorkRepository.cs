@@ -16,6 +16,7 @@ namespace Reprository.Core.Interfaces
         IBaseRepository<Rate> Rate { get; }
         IBaseRepository<Order> Order { get;}
         IBaseRepository<Profit> Profit { get; }
+        IBaseRepository<Review> Review { get; } 
         IAdminRepository Admin { get; }
         IStoreRepository Store { get; }
         IVendorRepository Vendor { get; }

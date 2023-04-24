@@ -9,5 +9,7 @@ namespace Reprository.Core.Interfaces
 {
     public interface ICardItemReposatory : IBaseRepository<CartItem>
     {
+        public string GetVendorId(int cardId);
+
     }
 }

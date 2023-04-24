@@ -493,9 +493,6 @@ namespace Reprository.EF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AdminId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("date");
 
@@ -518,8 +515,6 @@ namespace Reprository.EF.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AdminId");
 
                     b.HasIndex("MainProductId");
 
@@ -575,17 +570,20 @@ namespace Reprository.EF.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("DiscountId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
-                    b.Property<decimal?>("PriceAfterDiscount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double?>("PriceAfterDiscount")
+                        .HasColumnType("float");
 
                     b.Property<int?>("ProfitId")
                         .HasColumnType("int");
@@ -607,6 +605,8 @@ namespace Reprository.EF.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("DiscountId");
+
                     b.HasIndex("ProfitId");
 
                     b.HasIndex("StoreId");
@@ -621,7 +621,7 @@ namespace Reprository.EF.Migrations
                             Description = "jkjkljkjrijklwjejijijwkr",
                             IsDeleted = false,
                             Name = "Samsung Galaxy A03",
-                            Price = 3000m,
+                            Price = 3000.0,
                             Quantity = 500,
                             RateValue = 3
                         },
@@ -632,7 +632,7 @@ namespace Reprository.EF.Migrations
                             Description = "jlkmmd;lqwkdoiwuiedyqhdjoweklfh",
                             IsDeleted = false,
                             Name = "Nokia C31 4G Smartphone",
-                            Price = 4000m,
+                            Price = 4000.0,
                             Quantity = 400,
                             RateValue = 4
                         });
@@ -758,14 +758,14 @@ namespace Reprository.EF.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("date");
 
-                    b.Property<int>("PaymentId")
+                    b.Property<int?>("PaymentId")
                         .HasColumnType("int");
 
                     b.Property<int>("ShoppingCartId")
                         .HasColumnType("int");
 
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("shippingState")
                         .HasColumnType("int");
@@ -830,24 +830,27 @@ namespace Reprository.EF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<double>("AdminProfitValue")
+                        .HasColumnType("float");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsReturned")
                         .HasColumnType("bit");
 
-                    b.Property<int>("MainProductId")
+                    b.Property<int?>("MainProductId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ProfitDate")
                         .HasColumnType("date");
 
-                    b.Property<double>("Value")
-                        .HasColumnType("float");
-
                     b.Property<string>("VendorId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("VendorProfitValue")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -1057,7 +1060,7 @@ namespace Reprository.EF.Migrations
                     b.Property<int?>("StoreId")
                         .HasColumnType("int");
 
-                    b.Property<double>("TotalProfit")
+                    b.Property<double?>("TotalProfit")
                         .HasColumnType("float");
 
                     b.HasKey("ApplicationUserId");
@@ -1249,19 +1252,13 @@ namespace Reprository.EF.Migrations
 
             modelBuilder.Entity("Reprository.Core.Models.Discount", b =>
                 {
-                    b.HasOne("Reprository.Core.Models.Admin", "Admin")
-                        .WithMany("discounts")
-                        .HasForeignKey("AdminId");
-
                     b.HasOne("Reprository.Core.Models.MainProduct", "MainProduct")
-                        .WithMany("Discounts")
+                        .WithMany()
                         .HasForeignKey("MainProductId");
 
                     b.HasOne("Reprository.Core.Models.Vendor", "Vendor")
                         .WithMany("discounts")
                         .HasForeignKey("VendorId");
-
-                    b.Navigation("Admin");
 
                     b.Navigation("MainProduct");
 
@@ -1291,6 +1288,10 @@ namespace Reprository.EF.Migrations
                         .WithMany("MainProducts")
                         .HasForeignKey("CategoryId");
 
+                    b.HasOne("Reprository.Core.Models.Discount", "Discount")
+                        .WithMany()
+                        .HasForeignKey("DiscountId");
+
                     b.HasOne("Reprository.Core.Models.Profit", "Profit")
                         .WithMany()
                         .HasForeignKey("ProfitId");
@@ -1304,6 +1305,8 @@ namespace Reprository.EF.Migrations
                     b.Navigation("CartItem");
 
                     b.Navigation("Category");
+
+                    b.Navigation("Discount");
 
                     b.Navigation("Profit");
 
@@ -1329,9 +1332,7 @@ namespace Reprository.EF.Migrations
 
                     b.HasOne("Reprository.Core.Models.Payment", "Payment")
                         .WithMany()
-                        .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PaymentId");
 
                     b.HasOne("Reprository.Core.Models.ShoppingCart", "ShoppingCart")
                         .WithMany()
@@ -1356,15 +1357,13 @@ namespace Reprository.EF.Migrations
                         .WithMany()
                         .HasForeignKey("OrderId");
 
-                    b.HasOne("Reprository.Core.Models.Store", "store")
+                    b.HasOne("Reprository.Core.Models.Store", null)
                         .WithMany("Payments")
                         .HasForeignKey("StoreId");
 
                     b.Navigation("customer");
 
                     b.Navigation("order");
-
-                    b.Navigation("store");
                 });
 
             modelBuilder.Entity("Reprository.Core.Models.Profit", b =>
@@ -1377,9 +1376,7 @@ namespace Reprository.EF.Migrations
 
                     b.HasOne("Reprository.Core.Models.MainProduct", "MainProduct")
                         .WithMany()
-                        .HasForeignKey("MainProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MainProductId");
 
                     b.HasOne("Reprository.Core.Models.Vendor", "Vendor")
                         .WithMany("profits")
@@ -1505,8 +1502,6 @@ namespace Reprository.EF.Migrations
 
             modelBuilder.Entity("Reprository.Core.Models.Admin", b =>
                 {
-                    b.Navigation("discounts");
-
                     b.Navigation("profits");
                 });
 
@@ -1535,8 +1530,6 @@ namespace Reprository.EF.Migrations
 
             modelBuilder.Entity("Reprository.Core.Models.MainProduct", b =>
                 {
-                    b.Navigation("Discounts");
-
                     b.Navigation("Images");
 
                     b.Navigation("Rates");

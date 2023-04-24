@@ -16,7 +16,7 @@ namespace Reprository.Core.Models
         public ApplicationUser ApplicationUser { get; set; }
 
         public List<Profit>? profits { get; set; }
-        public List<Discount>? discounts { get; set; }
+        //public List<Discount>? discounts { get; set; }
         
     }
 }

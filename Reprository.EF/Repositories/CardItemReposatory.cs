@@ -1,4 +1,5 @@
-﻿using Reprository.Core.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
 using Reprository.EF.Reprositories;
 using System;
@@ -15,6 +16,21 @@ namespace Reprository.EF.Repositories
         public CardItemReposatory(ApplicationDBContext context) : base(context)
         {
             this.context = context;
+        }
+
+        
+
+        public string GetVendorId(int cardId)
+        {
+            return context.CartItems
+                .Where(c=>c.Id==cardId)
+                .Include(c => c.MainProduct)
+                .ThenInclude(p => p.Store)
+                .ThenInclude(s => s.vendor)
+                .Select(i=>i.MainProduct.Store.vendor.ApplicationUserId)
+                .FirstOrDefault();
+
+
         }
     }
 }

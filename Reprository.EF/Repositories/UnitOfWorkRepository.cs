@@ -17,9 +17,11 @@ namespace Reprository.EF.Repositories
         public IBaseRepository<Customer> Customer { get; private set; }
         public IBaseRepository<Category> Category { get; private set; }
         public IProductRepository Product { get; private set; }   
+        public IBaseRepository<Profit> Profit { get; private set; }
         public IStoreRepository Store { get; private set; }
         public IVendorRepository Vendor { get; private set; }
         public IBaseRepository<Payment> Payment { get; private set; }
+        public IBaseRepository<Rate> Rate { get; private set; }
 
         public IMobileRepository Mobile { get; private set; }
         public IBookReprository Book { get; private set; }
@@ -30,6 +32,9 @@ namespace Reprository.EF.Repositories
         public IShoppingCartRepository ShoppingCart { get; private set; }
         public IWishlistRepository Wishlist { get; private set; }
         public ICardItemReposatory CardItem { get; private set; }
+        public IBaseRepository<Order> Order { get; private set; }
+
+        public IAdminRepository Admin { get; private set; }
         public UnitOfWorkRepository(ApplicationDBContext context)
         {
             this.context = context;
@@ -49,6 +54,10 @@ namespace Reprository.EF.Repositories
             ShoppingCart = new ShoppingCartRepository(this.context);
             Wishlist = new WishlistRepository(this.context);
             CardItem= new CardItemReposatory(this.context);
+            Rate=new BaseRepository<Rate>(this.context);
+            Order=new BaseRepository<Order>(this.context);
+            Admin=new AdminRepository(this.context);
+            Profit=new BaseRepository<Profit>(this.context);
         }
         public void Complete()
         {

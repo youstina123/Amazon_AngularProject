@@ -24,7 +24,7 @@ namespace Reprository.Core.Models
         //public int Quantity { get; set; }
         [Column(TypeName = "date")] 
         public DateTime OrderDate { get; set; }
-        public double TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
         public bool IsDeleted { get; set; }
         public bool IsReturned { get; set; }
         public ShippingState shippingState { get; set; }
@@ -34,7 +34,7 @@ namespace Reprository.Core.Models
         public Customer? Customer { get; set; }
 
         [ForeignKey("Payment")]
-        public int PaymentId { get; set; }
+        public int? PaymentId { get; set; }
         public Payment? Payment { get; set; }
 
         [ForeignKey("ShoppingCart")]

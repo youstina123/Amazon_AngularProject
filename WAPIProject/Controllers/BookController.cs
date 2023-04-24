@@ -219,7 +219,7 @@ namespace WAPIProject.Controllers
 
             List<Book> booksfilter = (List<Book>)await unitOfWorkRepository
                  .Book
-                 .FindAllAsync(b => b.MainProduct.PriceAfterDiscount != null, new[] { "MainProduct" });
+                 .FindAllAsync(b => b.MainProduct.PriceAfterDiscount < b.MainProduct.Price, new[] { "MainProduct" });
             return Ok(booksfilter);
         }
 

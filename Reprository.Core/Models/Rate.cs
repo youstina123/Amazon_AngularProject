@@ -20,7 +20,7 @@ namespace Reprository.Core.Models
     {
         [Key]
         public int Id { get; set; }
-        public Stars stars { get; set; } 
+        public Stars stars { get; set; }
         public bool IsDeleted { get; set; }
 
         [ForeignKey("MainProduct")]

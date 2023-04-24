@@ -146,35 +146,35 @@ namespace WAPIProject.Controllers
 
         }
 
-        [HttpGet("Profit")]
-        public IActionResult AdminProfit()
-        {
-            TotalAdminProfitDTO totalAdminProfitDTO = new TotalAdminProfitDTO();    
-            List<AdminProfitDTO> adminProfitList = new List<AdminProfitDTO>();
-            var payment = unitOfWorkRepository.Payment.FindAll(new[] { "store" });
+        //[HttpGet("Profit")]
+        //public IActionResult AdminProfit()
+        //{
+        //    TotalAdminProfitDTO totalAdminProfitDTO = new TotalAdminProfitDTO();    
+        //    List<AdminProfitDTO> adminProfitList = new List<AdminProfitDTO>();
+        //    var payment = unitOfWorkRepository.Payment.FindAll(new[] { "store" });
 
-            foreach (var item in payment)
-            {
+        //    foreach (var item in payment)
+        //    {
 
-                AdminProfitDTO adminProfit = new AdminProfitDTO();
-                adminProfit.StoreName = item.store.Name;
-                adminProfit.Profit = item.Amount * 0.1;
+        //        AdminProfitDTO adminProfit = new AdminProfitDTO();
+        //        adminProfit.StoreName = item.store.Name;
+        //        adminProfit.Profit = item.Amount * 0.1;
 
-                adminProfitList.Add(adminProfit);
+        //        adminProfitList.Add(adminProfit);
 
-                ;
-            }
-            double TotalProfit = 0;
-            foreach (var item in adminProfitList)
-            {
-                {
-                    TotalProfit += item.Profit;
-                }
-            }
-            totalAdminProfitDTO.adminProfitList = adminProfitList;
-            totalAdminProfitDTO.totalAdminProfit= TotalProfit;  
-            return Ok(totalAdminProfitDTO);
-        }
+        //        ;
+        //    }
+        //    double TotalProfit = 0;
+        //    foreach (var item in adminProfitList)
+        //    {
+        //        {
+        //            TotalProfit += item.Profit;
+        //        }
+        //    }
+        //    totalAdminProfitDTO.adminProfitList = adminProfitList;
+        //    totalAdminProfitDTO.totalAdminProfit= TotalProfit;  
+        //    return Ok(totalAdminProfitDTO);
+        //}
 
         [HttpPost("AddCategory")]
         public IActionResult AddCategory(Category category)

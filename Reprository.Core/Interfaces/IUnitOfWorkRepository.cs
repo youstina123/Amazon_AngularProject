@@ -13,6 +13,10 @@ namespace Reprository.Core.Interfaces
         IBaseRepository<Customer> Customer { get; }
         IBaseRepository<Category> Category { get; }
         IBaseRepository<Payment> Payment { get; }
+        IBaseRepository<Rate> Rate { get; }
+        IBaseRepository<Order> Order { get;}
+        IBaseRepository<Profit> Profit { get; }
+        IAdminRepository Admin { get; }
         IStoreRepository Store { get; }
         IVendorRepository Vendor { get; }
         IProductRepository Product { get; }

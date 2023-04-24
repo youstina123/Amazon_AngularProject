@@ -156,6 +156,64 @@ namespace Reprository.EF.Reprositories
             return await query.ToListAsync();
         }
 
+        public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, int? take, int? skip,
+            Expression<Func<T, object>> orderBy = null, string orderByDirection = OrderBy.Ascending, string[] includes = null)
+        {
+            IQueryable<T> query = _context.Set<T>().Where(criteria);
+
+            if (includes != null)
+            {
+                foreach (var iclude in includes)
+                {
+                    query = query.Include(iclude);
+                }
+            }
+            if (take.HasValue)
+                query = query.Take(take.Value);
+
+            if (skip.HasValue)
+                query = query.Skip(skip.Value);
+
+            if (orderBy != null)
+            {
+                if (orderByDirection == OrderBy.Ascending)
+                    query = query.OrderBy(orderBy);
+                else
+                    query = query.OrderByDescending(orderBy);
+            }
+
+            return await query.ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> FindAllAsync( int? take, int? skip,
+            Expression<Func<T, object>> orderBy = null, string orderByDirection = OrderBy.Ascending, string[] includes = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            if (includes != null)
+            {
+                foreach (var iclude in includes)
+                {
+                    query = query.Include(iclude);
+                }
+            }
+            if (take.HasValue)
+                query = query.Take(take.Value);
+
+            if (skip.HasValue)
+                query = query.Skip(skip.Value);
+
+            if (orderBy != null)
+            {
+                if (orderByDirection == OrderBy.Ascending)
+                    query = query.OrderBy(orderBy);
+                else
+                    query = query.OrderByDescending(orderBy);
+            }
+
+            return await query.ToListAsync();
+        }
+
         //**************************************
 
         public T Add(T entity)

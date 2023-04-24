@@ -26,9 +26,9 @@ namespace Reprository.Core.Models
         public int? MainProductId { get; set; }
         public MainProduct? MainProduct { get; set; }
 
-        [ForeignKey("Admin")]
-        public string? AdminId { get; set; }
-        public Admin? Admin { get; set; }
+        //[ForeignKey("Admin")]
+        //public string? AdminId { get; set; }
+        //public Admin? Admin { get; set; }
 
         [ForeignKey("Vendor")]
         public string? VendorId { get; set; }

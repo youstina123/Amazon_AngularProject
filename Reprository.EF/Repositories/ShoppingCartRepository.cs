@@ -1,4 +1,5 @@
-﻿using Reprository.Core.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
 using Reprository.EF.Reprositories;
 using System;
@@ -24,6 +25,15 @@ namespace Reprository.EF.Repositories
                 .Select(c => c.Id).FirstOrDefault();
 
             return castomerid;
+        }
+
+        public ShoppingCart GetShoppingcart (string id) {
+
+            return context.shoppingCarts
+                .Where(s => s.CustomerId == id)
+                .Include(s => s.CartItems)
+                .ThenInclude(s => s.MainProduct)
+                .FirstOrDefault();
         }
     }
 }

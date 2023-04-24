@@ -10,5 +10,6 @@ namespace Reprository.Core.Interfaces
     public interface IShoppingCartRepository:IBaseRepository<ShoppingCart>
     {
         public int GetCustomerID(string id);
+        public ShoppingCart GetShoppingcart(string id);
     }
 }

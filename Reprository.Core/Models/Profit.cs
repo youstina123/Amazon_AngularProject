@@ -10,7 +10,9 @@ namespace Reprository.Core.Models
     public class Profit
     {
         public int Id { get; set; }
-        public double Value { get; set; }
+        public double AdminProfitValue { get; set; }
+        public double VendorProfitValue { get; set; }
+
 
         [Column(TypeName = "date")]
         public DateTime ProfitDate { get; set; }
@@ -26,7 +28,7 @@ namespace Reprository.Core.Models
         public Vendor? Vendor { get; set; }
 
         [ForeignKey("MainProduct")]
-        public int MainProductId { get; set; }
+        public int? MainProductId { get; set; }
         public MainProduct ?MainProduct { get; set; }
 
         //[ForeignKey("Store")]

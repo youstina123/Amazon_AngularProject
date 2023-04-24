@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
+using Reprository.EF.Criteria;
 using WAPIProject.DTO;
 
 namespace WAPIProject.Controllers
@@ -344,8 +345,65 @@ namespace WAPIProject.Controllers
 
             List<Mobile> mobilesfilter = (List<Mobile>)await unitOfWorkRepository
                  .Mobile
-                 .FindAllAsync(b => b.MainProduct.PriceAfterDiscount != null, new[] { "MainProduct" });
+                 .FindAllAsync(b => b.MainProduct.PriceAfterDiscount < b.MainProduct.Price, new[] { "MainProduct" });
             return Ok(mobilesfilter);
+        }
+
+        [HttpGet("FilterWithSpecificDiscount")]
+        public IActionResult FilterWithSpecificDiscount(int dicount)
+        {
+            List<Mobile> listwithdiscount = new List<Mobile>();
+
+            List<Mobile> MobilesFilter = unitOfWorkRepository.Mobile.FindAll(new[] { "MainProduct" }).ToList();
+
+            foreach (Mobile mobile in MobilesFilter)
+            {
+                double rest= (double)(mobile.MainProduct.Price-mobile.MainProduct.PriceAfterDiscount);
+                double rate = (rest / mobile.MainProduct.Price * 100);
+                int roundrate= (int)Math.Round(rate);
+                if(roundrate == dicount)
+                {
+                    listwithdiscount.Add(mobile);
+                }
+            }
+            return Ok(listwithdiscount);
+        }
+
+        [HttpGet("RelatedMobilesOfStor")]
+        public async Task<IActionResult> RelatedMobilesOfStor(int id)
+        {
+            List<Mobile> topMobiles = (List<Mobile>)await unitOfWorkRepository
+                .Mobile
+                .FindAllAsync(m => m.MainProduct.StoreId == id, 10, null, m => m.MainProduct.RateValue, OrderBy.Descending);//, new[] { "MainProduct" });
+
+
+            return Ok(topMobiles);
+        }
+
+        [HttpGet("RelatedMobilesOfBrand")]
+        public async Task<IActionResult> RelatedMobilesOfBrand(string brandname)
+        {
+            List<Mobile> topMobiles = (List<Mobile>)await unitOfWorkRepository
+                .Mobile
+                .FindAllAsync(m => m.MainProduct.BrandName == brandname, 10, null, m => m.MainProduct.RateValue, OrderBy.Descending);//, new[] { "MainProduct" });
+
+
+            return Ok(topMobiles);
+        }
+
+        [HttpGet("RelatedMobilesOfCategory")]
+        public async Task<IActionResult> RelatedMobilesOfCategory()
+        {
+            
+            List<Mobile> topMobiles = (List<Mobile>)await unitOfWorkRepository
+                .Mobile
+                .FindAllAsync(2, null, m => m.MainProduct.RateValue, OrderBy.Descending, new[] { "MainProduct" });
+            //List<Computer> topComputer= (List<Computer>)await unitOfWorkRepository
+            //    .Mobile
+            //    .FindAllAsync(2, null, m => m.MainProduct.RateValue, OrderBy.Descending, new[] { "MainProduct" });
+
+
+            return Ok(topMobiles);
         }
 
     }

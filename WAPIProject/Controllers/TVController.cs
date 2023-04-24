@@ -282,7 +282,7 @@ namespace WAPIProject.Controllers
 
             List<TV> tvsfilter = (List<TV>)await unitOfWorkRepository
                  .TV
-                 .FindAllAsync(b => b.MainProduct.PriceAfterDiscount != null, new[] { "MainProduct" });
+                 .FindAllAsync(b => b.MainProduct.PriceAfterDiscount < b.MainProduct.Price, new[] { "MainProduct" });
             return Ok(tvsfilter);
         }
     }

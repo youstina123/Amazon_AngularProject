@@ -34,6 +34,10 @@ namespace WAPIProject.Controllers
 
                 await unitOfWorkRepository.CardItem.AddAsync(item);
 
+                MainProduct mainProduct = unitOfWorkRepository.Product.GetById(cardItem.MainProductId);
+                mainProduct.CartItemId = item.Id;
+
+                unitOfWorkRepository.Product.Update(mainProduct);
                 return new StatusCodeResult(StatusCodes.Status201Created);
             }
             return BadRequest(ModelState);

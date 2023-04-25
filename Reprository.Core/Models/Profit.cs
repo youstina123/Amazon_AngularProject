@@ -28,7 +28,7 @@ namespace Reprository.Core.Models
         public Vendor? Vendor { get; set; }
 
         [ForeignKey("MainProduct")]
-        public int? MainProductId { get; set; }
+        public int MainProductId { get; set; }
         public MainProduct ?MainProduct { get; set; }
 
         //[ForeignKey("Store")]

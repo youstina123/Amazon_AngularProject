@@ -27,6 +27,18 @@ namespace WAPIProject
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDBContext>();
             builder.Services.AddSignalR();
+            builder.Services.AddCors(
+                options =>
+
+                    options.AddDefaultPolicy(cong => {
+                        cong.AllowAnyMethod().
+                        SetIsOriginAllowed((host) => true)
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                        
+                    })
+                );
+
             builder.Services.Configure<SmsVerification>(builder.Configuration.GetSection("SMS"));
             builder.Services.AddTransient<ISmsSender, SmsSenderRepository>();
 
@@ -67,6 +79,7 @@ namespace WAPIProject
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors();
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapHub<commentHub>("/comment");

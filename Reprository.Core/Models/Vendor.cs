@@ -22,6 +22,6 @@ namespace Reprository.Core.Models
 
         public List<Discount> ?discounts { get; set; }   
         public List<Profit>? profits { get; set; }
-        public double? TotalProfit { get; set; }
+        public double TotalProfit { get; set; }=0;
     }
 }

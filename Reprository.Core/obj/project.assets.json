@@ -2511,19 +2511,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Amoun\\.nuget\\packages\\": {}
+    "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.Core\\Reprository.Core.csproj",
+      "projectUniqueName": "F:\\Amazon3\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj",
       "projectName": "Reprository.Core",
-      "projectPath": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.Core\\Reprository.Core.csproj",
-      "packagesPath": "C:\\Users\\Amoun\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Amoun\\Desktop\\8\\Reprository.Core\\obj\\",
+      "projectPath": "F:\\Amazon3\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj",
+      "packagesPath": "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\",
+      "outputPath": "F:\\Amazon3\\Amazon_AngularProject\\Reprository.Core\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Amoun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Al Lewaa Company\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2574,7 +2579,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

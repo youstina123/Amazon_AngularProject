@@ -24,10 +24,6 @@ namespace Reprository.Core.Models
         [Column(TypeName = "date")]
         public DateTime PaymentDate { get; set; }
 
-        //[ForeignKey("store")]
-        //public int? StoreId { get; set; }
-        //public Store? store { get; set; }
-
         [ForeignKey("customer")]
         public string? CustomerId { get; set; }
         public Customer? customer { get; set; }

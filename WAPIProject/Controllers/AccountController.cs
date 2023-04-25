@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using System.Security.Claims;
@@ -29,20 +30,25 @@ namespace WAPIProject.Controllers
             this.config = config;
         }
         [HttpPost("register")]//api/account/register
-        public async Task<IActionResult> Register(RegisterUserDto userDTO)
+        public async Task<IActionResult> Register([FromForm]RegisterUserDto userDTO)
         {
             if (ModelState.IsValid)
             {
                 //create  ==>add user db
+                using var dataStream = new MemoryStream(); // Save Store Image as Array of byte 
+
+                userDTO.Image.CopyTo(dataStream);
                 ApplicationUser userModel = new ApplicationUser();
                 userModel.Email = userDTO.Email;
                 userModel.UserName = userDTO.UserName;
                 userModel.PhoneNumber = userDTO.PhoneNumber;
+                userModel.image=dataStream.ToArray();
                 IdentityResult result = await userManager.CreateAsync(userModel, userDTO.Password);
                 if (result.Succeeded)
                 {
                     Customer customer = new Customer();
                     customer.ApplicationUserId = userModel.Id;
+
                     unitOfWorkRepository.Customer.Add(customer);
 
                     ShoppingCart shoppingCart = new ShoppingCart();
@@ -57,10 +63,17 @@ namespace WAPIProject.Controllers
         }
 
         [HttpPost("vendorRegister")]
-        public async Task<IActionResult> VendorRegestration(VendorRegaestrationDto vendorRegester)
+        public async Task<IActionResult> VendorRegestration([FromForm]VendorRegaestrationDto vendorRegester)
         {
             if (ModelState.IsValid)
             {
+                #region Images
+                using var storeDataStream = new MemoryStream();
+                vendorRegester.StoreImage.CopyTo(storeDataStream);
+                using var vendorDataStream = new MemoryStream();
+                vendorRegester.VendorImage.CopyTo(vendorDataStream); 
+                #endregion
+
                 ApplicationUser userModel = new ApplicationUser();
                 Store store = new Store();
                 Vendor vendor = new Vendor();
@@ -82,6 +95,7 @@ namespace WAPIProject.Controllers
                 userModel.PhoneNumber  = vendorRegester.PhoneNumber;
                 userModel.City         = vendorRegester.City;
                 userModel.Country      = vendorRegester.Country;
+                userModel.image=vendorDataStream.ToArray();
                 userModel.IsDeleted = false;
 
 
@@ -91,7 +105,8 @@ namespace WAPIProject.Controllers
                 store.Country = vendorRegester.Country;
                 store.City = vendorRegester.City;
                 store.IsConfirmed = false;
-
+                store.CategoryId = vendorRegester.Categoryid;
+                store.Image = storeDataStream.ToArray();
                 IdentityResult result = await userManager.CreateAsync(userModel, vendorRegester.Password);
 
                 if (result.Succeeded)
@@ -101,6 +116,7 @@ namespace WAPIProject.Controllers
 
                     unitOfWorkRepository.Store.Add(store);
 
+                    
                     vendor.StoreId = store.Id;
 
 

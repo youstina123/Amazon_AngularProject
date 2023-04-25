@@ -160,6 +160,9 @@ namespace Reprository.EF.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<double>("TotalProfit")
+                        .HasColumnType("float");
+
                     b.HasKey("ApplicationUserId");
 
                     b.ToTable("Admins");
@@ -330,7 +333,7 @@ namespace Reprository.EF.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MainProductId")
+                    b.Property<int>("MainProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Product_Quantity")
@@ -363,12 +366,7 @@ namespace Reprository.EF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StoreId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("StoreId");
 
                     b.ToTable("Categories");
                 });
@@ -502,7 +500,7 @@ namespace Reprository.EF.Migrations
                     b.Property<bool>("IsExpired")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MainProductId")
+                    b.Property<int>("MainProductId")
                         .HasColumnType("int");
 
                     b.Property<double>("PercentageOff")
@@ -804,16 +802,11 @@ namespace Reprository.EF.Migrations
                     b.Property<int>("PaymentMethod")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StoreId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("OrderId");
-
-                    b.HasIndex("StoreId");
 
                     b.ToTable("Payments");
                 });
@@ -839,7 +832,7 @@ namespace Reprository.EF.Migrations
                     b.Property<bool>("IsReturned")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MainProductId")
+                    b.Property<int>("MainProductId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ProfitDate")
@@ -971,8 +964,8 @@ namespace Reprository.EF.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ImageId")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<bool>("IsConfirmed")
                         .HasColumnType("bit");
@@ -995,8 +988,6 @@ namespace Reprository.EF.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("ImageId");
 
                     b.HasIndex("VendorId");
 
@@ -1060,7 +1051,7 @@ namespace Reprository.EF.Migrations
                     b.Property<int?>("StoreId")
                         .HasColumnType("int");
 
-                    b.Property<double?>("TotalProfit")
+                    b.Property<double>("TotalProfit")
                         .HasColumnType("float");
 
                     b.HasKey("ApplicationUserId");
@@ -1185,7 +1176,9 @@ namespace Reprository.EF.Migrations
                 {
                     b.HasOne("Reprository.Core.Models.MainProduct", "MainProduct")
                         .WithMany()
-                        .HasForeignKey("MainProductId");
+                        .HasForeignKey("MainProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Reprository.Core.Models.ShoppingCart", "ShoppingCart")
                         .WithMany("CartItems")
@@ -1194,15 +1187,6 @@ namespace Reprository.EF.Migrations
                     b.Navigation("MainProduct");
 
                     b.Navigation("ShoppingCart");
-                });
-
-            modelBuilder.Entity("Reprository.Core.Models.Category", b =>
-                {
-                    b.HasOne("Reprository.Core.Models.Store", "Store")
-                        .WithMany()
-                        .HasForeignKey("StoreId");
-
-                    b.Navigation("Store");
                 });
 
             modelBuilder.Entity("Reprository.Core.Models.Clothing", b =>
@@ -1254,7 +1238,9 @@ namespace Reprository.EF.Migrations
                 {
                     b.HasOne("Reprository.Core.Models.MainProduct", "MainProduct")
                         .WithMany()
-                        .HasForeignKey("MainProductId");
+                        .HasForeignKey("MainProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Reprository.Core.Models.Vendor", "Vendor")
                         .WithMany("discounts")
@@ -1357,10 +1343,6 @@ namespace Reprository.EF.Migrations
                         .WithMany()
                         .HasForeignKey("OrderId");
 
-                    b.HasOne("Reprository.Core.Models.Store", null)
-                        .WithMany("Payments")
-                        .HasForeignKey("StoreId");
-
                     b.Navigation("customer");
 
                     b.Navigation("order");
@@ -1376,7 +1358,9 @@ namespace Reprository.EF.Migrations
 
                     b.HasOne("Reprository.Core.Models.MainProduct", "MainProduct")
                         .WithMany()
-                        .HasForeignKey("MainProductId");
+                        .HasForeignKey("MainProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Reprository.Core.Models.Vendor", "Vendor")
                         .WithMany("profits")
@@ -1439,20 +1423,14 @@ namespace Reprository.EF.Migrations
             modelBuilder.Entity("Reprository.Core.Models.Store", b =>
                 {
                     b.HasOne("Reprository.Core.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Stores")
                         .HasForeignKey("CategoryId");
-
-                    b.HasOne("Reprository.Core.Models.Image", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId");
 
                     b.HasOne("Reprository.Core.Models.Vendor", "vendor")
                         .WithMany()
                         .HasForeignKey("VendorId");
 
                     b.Navigation("Category");
-
-                    b.Navigation("Image");
 
                     b.Navigation("vendor");
                 });
@@ -1515,6 +1493,8 @@ namespace Reprository.EF.Migrations
                     b.Navigation("Brands");
 
                     b.Navigation("MainProducts");
+
+                    b.Navigation("Stores");
                 });
 
             modelBuilder.Entity("Reprository.Core.Models.Customer", b =>
@@ -1545,8 +1525,6 @@ namespace Reprository.EF.Migrations
             modelBuilder.Entity("Reprository.Core.Models.Store", b =>
                 {
                     b.Navigation("MainProduct");
-
-                    b.Navigation("Payments");
                 });
 
             modelBuilder.Entity("Reprository.Core.Models.Vendor", b =>

@@ -17,7 +17,7 @@ namespace Reprository.EF.Repositories
         public IBaseRepository<Customer> Customer { get; private set; }
         public IBaseRepository<Category> Category { get; private set; }
         public IProductRepository Product { get; private set; }   
-        public IBaseRepository<Profit> Profit { get; private set; }
+        public IProfitRepository Profit { get; private set; }
         public IStoreRepository Store { get; private set; }
         public IVendorRepository Vendor { get; private set; }
         public IBaseRepository<Payment> Payment { get; private set; }
@@ -35,6 +35,8 @@ namespace Reprository.EF.Repositories
         public IBaseRepository<Order> Order { get; private set; }
         public IBaseRepository<Review> Review { get; private set; }
         public IAdminRepository Admin { get; private set; }
+
+        public IBaseRepository<Discount> Discount { get; private set; }
         public UnitOfWorkRepository(ApplicationDBContext context)
         {
             this.context = context;
@@ -44,7 +46,7 @@ namespace Reprository.EF.Repositories
             Category = new BaseRepository<Category>(this.context);
             Payment = new BaseRepository<Payment>(this.context);
             Store = new StoreRepository(this.context);    
-            //Vendor = new VendorRepository(this.context);    
+            Vendor = new VendorRepository(this.context);    
             Product = new ProductRepository(this.context);
             Mobile = new MobileReprository(this.context);
             Book = new BookRepository(this.context);
@@ -57,8 +59,9 @@ namespace Reprository.EF.Repositories
             Rate=new BaseRepository<Rate>(this.context);
             Order=new BaseRepository<Order>(this.context);
             Admin=new AdminRepository(this.context);
-            Profit=new BaseRepository<Profit>(this.context);
+            Profit=new ProfitRepository(this.context);
             Review= new BaseRepository<Review>(this.context);
+            Discount=new BaseRepository<Discount>(this.context);
         }
         public void Complete()
         {

@@ -1,4 +1,5 @@
-﻿using Reprository.Core.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
 using Reprository.EF.Reprositories;
 using System;
@@ -17,9 +18,11 @@ namespace Reprository.EF.Repositories
             this.context = context;
         }
 
-        public string GetAdminId()
+        public Admin GetAdmin()
         {
-            return context.Admins.Select(a=>a.ApplicationUserId).FirstOrDefault();
+            return context.Admins.FirstOrDefault();
         }
+
+        
     }
 }

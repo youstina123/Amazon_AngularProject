@@ -19,7 +19,7 @@ namespace Reprository.Core.Models
         public bool IsDeleted { get; set; }
 
         [ForeignKey("MainProduct")]
-        public int? MainProductId { get; set; }
+        public int MainProductId { get; set; }
         public MainProduct? MainProduct { get; set; }
 
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
@@ -44,6 +45,9 @@ namespace WAPIProject.Controllers
 
                 unitOfWorkRepository.Order.Add(order);
 
+                shoppingCart.OrderId = order.Id;
+                unitOfWorkRepository.ShoppingCart.Update(shoppingCart);
+
                 Payment payment = new Payment();
                 payment.CustomerId = customerid;
                 payment.Amount = total;
@@ -62,7 +66,7 @@ namespace WAPIProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                string adminId=unitOfWorkRepository.Admin.GetAdminId();
+                Admin admin=unitOfWorkRepository.Admin.GetAdmin();
 
                 ShoppingCart shoppingCart = unitOfWorkRepository
                     .ShoppingCart
@@ -71,9 +75,9 @@ namespace WAPIProject.Controllers
                 foreach (var item in shoppingCart.CartItems)
                 {
                     Profit profit = new Profit();
-                    profit.AdminId = adminId;
-                    string vendorId= unitOfWorkRepository.CardItem.GetVendorId(item.Id);
-                    profit.VendorId = vendorId;
+                    profit.AdminId = admin.ApplicationUserId;
+                    Vendor vendor= unitOfWorkRepository.CardItem.GetVendor(item.Id);
+                    profit.VendorId = vendor.ApplicationUserId;
                     profit.MainProductId = item.MainProductId;
                     profit.ProfitDate = DateTime.Now;
 
@@ -83,8 +87,19 @@ namespace WAPIProject.Controllers
                     double? priceafterdiscount = cartitm.MainProduct.PriceAfterDiscount;
 
                     profit.AdminProfitValue = price.Value * 0.1;
+                    admin.TotalProfit += profit.AdminProfitValue;
+
                     profit.VendorProfitValue = priceafterdiscount.Value - profit.AdminProfitValue;
+                    vendor.TotalProfit += profit.VendorProfitValue;
+
                     unitOfWorkRepository.Profit.Add(profit);
+                    unitOfWorkRepository.Admin.Update(admin);
+                    unitOfWorkRepository.Vendor.Update(vendor);
+
+                    MainProduct mainProduct = unitOfWorkRepository.Product.GetById(profit.MainProductId);
+                    mainProduct.ProfitId = profit.Id;
+
+                    unitOfWorkRepository.Product.Update(mainProduct);
 
 
                 }

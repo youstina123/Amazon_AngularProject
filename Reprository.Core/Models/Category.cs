@@ -14,16 +14,8 @@ namespace Reprository.Core.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
-
-        [ForeignKey("Store")]
-        public int? StoreId { get; set; }
-        public Store? Store { get; set; }
-
-     /*   [ForeignKey("MainProduct")]
-        public int? MainProductId { get; set; }
-        public MainProduct? MainProduct { get; set; }*/
-
         public List<MainProduct>? MainProducts { get; set; }
+        public List<Store>?Stores { get; set; }
         public List<Brand>? Brands { get; set; }
     }
 }

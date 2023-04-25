@@ -91,12 +91,12 @@ namespace WAPIProject.Controllers
                 notifications.Email = item.ApplicationUser.Email;
                 notifications.Gender = item.ApplicationUser.gender.ToString();
                 notifications.Id = item.ApplicationUser.Id;
-                //notifications.StoreName = item.store.Name;
-                //notifications.StoreCountry = item.store.Country;
-                //notifications.StoreCity = item.store.City;
-                //notifications.StoreStreet = item.store.Street;
-                //notifications.StoreDescription = item.store.Description.ToString();
-                //notificationsList.Add(notifications);
+                notifications.StoreName = item.Store.Name;
+                notifications.StoreCountry = item.Store.Country;
+                notifications.StoreCity = item.Store.City;
+                notifications.StoreStreet = item.Store.Street;
+                notifications.StoreDescription = item.Store.Description.ToString();
+                notificationsList.Add(notifications);
 
             }
          
@@ -177,10 +177,34 @@ namespace WAPIProject.Controllers
         //}
 
         [HttpPost("AddCategory")]
-        public IActionResult AddCategory(Category category)
+        public IActionResult AddCategory(CategoryDTO newCategory)
         {
+            Category category =new Category();
+            category.Name = newCategory.Name;
+
             unitOfWorkRepository.Category.Add(category);
-            return Ok("Added Successfully");
+            return Ok(category);
+        }
+
+        [HttpGet("GetAdminProfit")]
+        public IActionResult GetAdminProfit()
+        {
+            List<Profit> profitList = unitOfWorkRepository.Profit.GetAdminProfits();
+            AdminTotalProfitDTO adminTotalProfit= new AdminTotalProfitDTO();
+            foreach(Profit profit in profitList)
+            {
+                AdminProfitDTO adminProfitDTO = new AdminProfitDTO();
+                adminProfitDTO.Profit = profit.AdminProfitValue;
+                adminProfitDTO.ProfitDate = profit.ProfitDate;
+                adminProfitDTO.Price = profit.MainProduct.Price;
+                adminProfitDTO.ProductName = profit.MainProduct.Name;
+                adminProfitDTO.StoreName = profit.MainProduct.Store.Name;
+
+                adminTotalProfit.profitList.Add(adminProfitDTO);
+            }
+            Admin admin = unitOfWorkRepository.Admin.GetAdmin();
+            adminTotalProfit.TotalProfit = admin.TotalProfit;
+            return Ok(adminTotalProfit);
         }
 
     }

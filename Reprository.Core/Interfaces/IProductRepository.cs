@@ -9,6 +9,5 @@ namespace Reprository.Core.Interfaces
 {
     public interface IProductRepository : IBaseRepository<MainProduct>
     {
-
     }
 }

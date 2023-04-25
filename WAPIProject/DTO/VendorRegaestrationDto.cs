@@ -17,5 +17,10 @@ namespace WAPIProject.DTO
         public string StoreAddress { get; set; }
         public string StoreDescription { get; set; }
         public string StoreSpecialty { get; set; }
+        public int Categoryid { get; set; }
+        public IFormFile? StoreImage { get; set; }
+        public IFormFile? VendorImage { get; set; }
+
+
     }
 }

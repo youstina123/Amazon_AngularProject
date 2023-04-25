@@ -23,7 +23,7 @@ namespace Reprository.Core.Models
         public bool IsExpired { get; set; }
 
         [ForeignKey("MainProduct")]
-        public int? MainProductId { get; set; }
+        public int MainProductId { get; set; }
         public MainProduct? MainProduct { get; set; }
 
         //[ForeignKey("Admin")]

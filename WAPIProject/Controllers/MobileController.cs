@@ -83,8 +83,8 @@ namespace WAPIProject.Controllers
                 product.RateValue = mobile.RateValue;
                 product.BrandId = mobile.BrandId;
                 product.CategoryId = mobile.CategoryId;
-                product.CartItemId = mobile.CartItemId;
-                product.ProfitId = mobile.ProfitId;
+               // product.CartItemId = mobile.CartItemId;
+               // product.ProfitId = mobile.ProfitId;
                 product.StoreId = mobile.StoreId;
 
                 await unitOfWorkRepository.Product.AddAsync(product);
@@ -111,9 +111,8 @@ namespace WAPIProject.Controllers
                 return new StatusCodeResult(StatusCodes.Status201Created);
             }
             return BadRequest(ModelState);
-
-
         }
+
         [HttpDelete("DeleteMobile")]
         public IActionResult DeleteMobile(int id)
         {

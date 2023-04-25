@@ -1,11 +1,54 @@
 {
   "Version": 1,
-  "Hash": "TnZ6f+ww8EhkdAqMdG4U4hu7cBWMMsbCjVqjLIDs7T8=",
+  "Hash": "Teax0lcTHDXVmFqCDIGD0+K7RATUUhRJBALRgjNofws=",
   "Source": "WAPIProject",
   "BasePath": "_content/WAPIProject",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "WAPIProject\\wwwroot",
+      "Source": "WAPIProject",
+      "ContentRoot": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\",
+      "BasePath": "_content/WAPIProject",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\microsoft-signalr\\signalr.js",
+      "SourceId": "WAPIProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\",
+      "BasePath": "_content/WAPIProject",
+      "RelativePath": "microsoft-signalr/signalr.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\microsoft-signalr\\signalr.js"
+    },
+    {
+      "Identity": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\microsoft-signalr\\signalr.min.js",
+      "SourceId": "WAPIProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\",
+      "BasePath": "_content/WAPIProject",
+      "RelativePath": "microsoft-signalr/signalr.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\microsoft-signalr\\signalr.min.js"
+    }
+  ]
 }

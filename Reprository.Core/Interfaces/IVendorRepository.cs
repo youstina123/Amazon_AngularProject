@@ -11,5 +11,7 @@ namespace Reprository.Core.Interfaces
     {
          string FindVendorId(int storeid);
          Vendor FindVendorDetailes(string userid);
+        public Vendor GetVendor(string vendorid);
+
     }
 }

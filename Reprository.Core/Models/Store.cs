@@ -26,7 +26,7 @@ namespace Reprository.Core.Models
         public string ?City { get; set; }
         public string ?Country { get; set; }
         public string ?Street { get; set; }
-        public Image ?Image { get; set; }
+        public byte[]? Image { get; set; }
         public bool IsDeleted { get; set; }
         public bool IsConfirmed { get; set; }
 
@@ -39,7 +39,6 @@ namespace Reprository.Core.Models
         public Category? Category { get; set; }
       
         public List<MainProduct>? MainProduct { get; set; }
-        public List<Payment>? Payments { get; set; }
 
     }
 }

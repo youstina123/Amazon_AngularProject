@@ -9,7 +9,7 @@ namespace Reprository.Core.Interfaces
 {
     public interface IAdminRepository:IBaseRepository<Admin>
     {
-        public string GetAdminId();
+        public Admin GetAdmin();
 
     }
 }

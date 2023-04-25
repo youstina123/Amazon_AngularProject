@@ -20,14 +20,14 @@ namespace Reprository.EF.Repositories
 
         
 
-        public string GetVendorId(int cardId)
+        public Vendor GetVendor(int cardId)
         {
             return context.CartItems
                 .Where(c=>c.Id==cardId)
                 .Include(c => c.MainProduct)
                 .ThenInclude(p => p.Store)
                 .ThenInclude(s => s.vendor)
-                .Select(i=>i.MainProduct.Store.vendor.ApplicationUserId)
+                .Select(v=>v.MainProduct.Store.vendor)
                 .FirstOrDefault();
 
 

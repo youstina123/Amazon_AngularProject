@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Reprository.EF.Repositories
 {
-    public class VendorRepository : BaseRepository<Vendor>/*IVendorRepository*/
+    public class VendorRepository : BaseRepository<Vendor>,IVendorRepository
     {
         ApplicationDBContext context;
         public VendorRepository(ApplicationDBContext context) : base(context)
@@ -18,23 +18,25 @@ namespace Reprository.EF.Repositories
             this.context = context;
         }
 
-        //public string FindVendorId(int storeid)
-        //{
-        //    string userid = context.Vendors.Where(m => m.StoreId == storeid).Select(m => m.ApplicationUserId).FirstOrDefault();
-        //    return userid;
-        //}
+        public string FindVendorId(int storeid)
+        {
+            string userid = context.Vendors.Where(m => m.StoreId == storeid).Select(m => m.ApplicationUserId).FirstOrDefault();
+            return userid;
+        }
 
-        //public Vendor FindVendorDetailes(string userid)
-        //{
-        //    Vendor hotel_Manager = context.Vendors.Where(v => v.ApplicationUserId == userid).
-        //        //Include(h => h.store).Include(a => a.ApplicationUser).FirstOrDefault();
-        //    return hotel_Manager;
-        //}
+        public Vendor FindVendorDetailes(string userid)
+        {
+            Vendor vendor = context.Vendors.Where(v => v.ApplicationUserId == userid).
+                Include(h => h.Store).Include(a => a.ApplicationUser).FirstOrDefault();
+            return vendor;
+        }
 
-
-
-
-
+        public Vendor GetVendor(string vendorid)
+        {
+            return context.Vendors
+                .FirstOrDefault(v => v.ApplicationUserId == vendorid);
+            
+        }
     }
 }
 

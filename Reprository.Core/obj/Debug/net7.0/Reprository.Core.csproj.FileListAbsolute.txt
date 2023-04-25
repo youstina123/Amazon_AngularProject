@@ -130,3 +130,15 @@ F:\Amazon2\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.C
 F:\Amazon2\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\refint\Reprository.Core.dll
 F:\Amazon2\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.pdb
 F:\Amazon2\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\ref\Reprository.Core.dll
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\bin\Debug\net7.0\Reprository.Core.deps.json
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\bin\Debug\net7.0\Reprository.Core.dll
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\bin\Debug\net7.0\Reprository.Core.pdb
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.csproj.AssemblyReference.cache
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.GeneratedMSBuildEditorConfig.editorconfig
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.AssemblyInfoInputs.cache
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.AssemblyInfo.cs
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.csproj.CoreCompileInputs.cache
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.dll
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\refint\Reprository.Core.dll
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\Reprository.Core.pdb
+F:\Amazon3\Amazon_AngularProject\Reprository.Core\obj\Debug\net7.0\ref\Reprository.Core.dll

@@ -44,9 +44,8 @@ namespace WAPIProject.Controllers
                 mobile.MainProduct.RateValue= NewMobile.RateValue;
                 mobile.MainProduct.BrandId = NewMobile.BrandId;
                 mobile.MainProduct.CategoryId = NewMobile.CategoryId;
-                mobile.MainProduct.CartItemId = NewMobile.CartItemId;
-                mobile.MainProduct.ProfitId = NewMobile.ProfitId;
                 mobile.MainProduct.StoreId = NewMobile.StoreId;
+
                 mobile.RAM = NewMobile.RAM;
                 mobile.ScreenSize = NewMobile.ScreenSize;
                 mobile.NumSIMCards= NewMobile.NumSIMCards;
@@ -83,11 +82,10 @@ namespace WAPIProject.Controllers
                 product.RateValue = mobile.RateValue;
                 product.BrandId = mobile.BrandId;
                 product.CategoryId = mobile.CategoryId;
-               // product.CartItemId = mobile.CartItemId;
-               // product.ProfitId = mobile.ProfitId;
                 product.StoreId = mobile.StoreId;
 
                 await unitOfWorkRepository.Product.AddAsync(product);
+
                 Mobile mobile1 = new Mobile();
                 mobile1.MainProductId = product.Id;
                 mobile1.ScreenSize = mobile.ScreenSize;
@@ -347,25 +345,32 @@ namespace WAPIProject.Controllers
                  .FindAllAsync(b => b.MainProduct.PriceAfterDiscount < b.MainProduct.Price, new[] { "MainProduct" });
             return Ok(mobilesfilter);
         }
-
         [HttpGet("FilterWithSpecificDiscount")]
-        public IActionResult FilterWithSpecificDiscount(int dicount)
+        public async Task<IActionResult> FilterWithSpecificDiscount(int dicount)
         {
-            List<Mobile> listwithdiscount = new List<Mobile>();
+            #region CalculatePersent
+            //List<Mobile> listwithdiscount = new List<Mobile>();
 
-            List<Mobile> MobilesFilter = unitOfWorkRepository.Mobile.FindAll(new[] { "MainProduct" }).ToList();
+            //List<Mobile> MobilesFilter = unitOfWorkRepository.Mobile.FindAll(new[] { "MainProduct" }).ToList();
 
-            foreach (Mobile mobile in MobilesFilter)
-            {
-                double rest= (double)(mobile.MainProduct.Price-mobile.MainProduct.PriceAfterDiscount);
-                double rate = (rest / mobile.MainProduct.Price * 100);
-                int roundrate= (int)Math.Round(rate);
-                if(roundrate == dicount)
-                {
-                    listwithdiscount.Add(mobile);
-                }
-            }
-            return Ok(listwithdiscount);
+            //foreach (Mobile mobile in MobilesFilter)
+            //{
+            //    double rest= (double)(mobile.MainProduct.Price-mobile.MainProduct.PriceAfterDiscount);
+            //    double rate = (rest / mobile.MainProduct.Price * 100);
+            //    int roundrate= (int)Math.Round(rate);
+            //    if(roundrate == dicount)
+            //    {
+            //        listwithdiscount.Add(mobile);
+            //    }
+            //} 
+            #endregion
+
+           // Discount discount=unitOfWorkRepository.Discount.Find(d=>d.PercentageOff == dicount);
+
+            List<Mobile> mobilesfilter = (List<Mobile>)await unitOfWorkRepository
+                .Mobile
+                .FindAllAsync(m => m.MainProduct.Discount.PercentageOff == dicount, new[] { "MainProduct" });
+            return Ok(mobilesfilter);
         }
 
         [HttpGet("RelatedMobilesOfStor")]
@@ -390,20 +395,20 @@ namespace WAPIProject.Controllers
             return Ok(topMobiles);
         }
 
-        [HttpGet("RelatedMobilesOfCategory")]
-        public async Task<IActionResult> RelatedMobilesOfCategory()
-        {
+        //[HttpGet("RelatedMobilesOfCategory")]
+        //public async Task<IActionResult> RelatedMobilesOfCategory()
+        //{
             
-            List<Mobile> topMobiles = (List<Mobile>)await unitOfWorkRepository
-                .Mobile
-                .FindAllAsync(2, null, m => m.MainProduct.RateValue, OrderBy.Descending, new[] { "MainProduct" });
-            //List<Computer> topComputer= (List<Computer>)await unitOfWorkRepository
-            //    .Mobile
-            //    .FindAllAsync(2, null, m => m.MainProduct.RateValue, OrderBy.Descending, new[] { "MainProduct" });
+        //    List<Mobile> topMobiles = (List<Mobile>)await unitOfWorkRepository
+        //        .Mobile
+        //        .FindAllAsync(2, null, m => m.MainProduct.RateValue, OrderBy.Descending, new[] { "MainProduct" });
+        //    //List<Computer> topComputer= (List<Computer>)await unitOfWorkRepository
+        //    //    .Mobile
+        //    //    .FindAllAsync(2, null, m => m.MainProduct.RateValue, OrderBy.Descending, new[] { "MainProduct" });
 
 
-            return Ok(topMobiles);
-        }
+        //    return Ok(topMobiles);
+        //}
 
     }
 }

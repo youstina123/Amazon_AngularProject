@@ -37,6 +37,9 @@ namespace Reprository.EF.Repositories
         public IAdminRepository Admin { get; private set; }
 
         public IBaseRepository<Discount> Discount { get; private set; }
+
+        public IBaseRepository<Brand> Brand { get; private set; }
+
         public UnitOfWorkRepository(ApplicationDBContext context)
         {
             this.context = context;
@@ -62,6 +65,9 @@ namespace Reprository.EF.Repositories
             Profit=new ProfitRepository(this.context);
             Review= new BaseRepository<Review>(this.context);
             Discount=new BaseRepository<Discount>(this.context);
+
+            Brand=new BaseRepository<Brand>(this.context);
+
         }
         public void Complete()
         {

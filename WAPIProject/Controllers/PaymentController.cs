@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
+
+using Reprository.EF.Criteria;
+using System.Numerics;
 using WAPIProject.DTO;
 
 namespace WAPIProject.Controllers
@@ -23,9 +26,7 @@ namespace WAPIProject.Controllers
 
             if (ModelState.IsValid)
             {
-                //ShoppingCart shoppingCart =await unitOfWorkRepository
-                //    .ShoppingCart
-                //    .FindAsync(s => s.CustomerId == customerid, new[] { "CartItems" });
+
 
                 ShoppingCart shoppingCart =  unitOfWorkRepository
                     .ShoppingCart
@@ -39,7 +40,7 @@ namespace WAPIProject.Controllers
                 Order order=new Order();
                 order.CustomerId = customerid;
                 order.OrderDate = DateTime.Now;
-                order.TotalPrice = (decimal)total;//totalprice;
+                order.TotalPrice = (double)total;//totalprice;
                 order.shippingState = 0;
                 order.ShoppingCartId = shoppingCart.Id;
 
@@ -48,14 +49,6 @@ namespace WAPIProject.Controllers
                 shoppingCart.OrderId = order.Id;
                 unitOfWorkRepository.ShoppingCart.Update(shoppingCart);
 
-                Payment payment = new Payment();
-                payment.CustomerId = customerid;
-                payment.Amount = total;
-                payment.PaymentMethod = 0;
-                payment.PaymentDate=DateTime.Now;
-                payment.OrderId = order.Id;
-
-                unitOfWorkRepository.Payment.Add(payment);
                 return new StatusCodeResult(StatusCodes.Status201Created);
             }
             return BadRequest(ModelState);
@@ -66,6 +59,18 @@ namespace WAPIProject.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                Order order = unitOfWorkRepository.Order.Find(o=>o.CustomerId == customerId);
+
+                Payment payment = new Payment();
+                payment.CustomerId = customerId;
+                payment.Amount = order.TotalPrice;
+                payment.PaymentMethod = 0;
+                payment.PaymentDate = DateTime.Now;
+                payment.OrderId = order.Id;
+
+                unitOfWorkRepository.Payment.Add(payment);
+
                 Admin admin=unitOfWorkRepository.Admin.GetAdmin();
 
                 ShoppingCart shoppingCart = unitOfWorkRepository
@@ -93,7 +98,6 @@ namespace WAPIProject.Controllers
                     vendor.TotalProfit += profit.VendorProfitValue;
 
                     unitOfWorkRepository.Profit.Add(profit);
-                    unitOfWorkRepository.Admin.Update(admin);
                     unitOfWorkRepository.Vendor.Update(vendor);
 
                     MainProduct mainProduct = unitOfWorkRepository.Product.GetById(profit.MainProductId);
@@ -103,10 +107,13 @@ namespace WAPIProject.Controllers
 
 
                 }
+                
+                unitOfWorkRepository.Admin.Update(admin);
+
+                shoppingCart.CartItems = null;
+
+                unitOfWorkRepository.ShoppingCart.Update(shoppingCart);
                 return new StatusCodeResult(StatusCodes.Status201Created);
-
-
-
             }
             return BadRequest(ModelState);
 

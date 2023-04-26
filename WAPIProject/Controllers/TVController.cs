@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
+
+using Reprository.EF.Criteria;
+
 using System.Reflection;
 using WAPIProject.DTO;
 
@@ -45,9 +48,9 @@ namespace WAPIProject.Controllers
                 tv.MainProduct.RateValue = NewTV.RateValue;
                 tv.MainProduct.BrandId = NewTV.BrandId;
                 tv.MainProduct.CategoryId= NewTV.CategoryId;
-                tv.MainProduct.CartItemId= NewTV.CartItemId;
-                tv.MainProduct.ProfitId= NewTV.ProfitId;
                 tv.MainProduct.StoreId= NewTV.StoreId;
+
+
                 tv.ScreenSize = NewTV.ScreenSize;
                 tv.NumHDMIInputs = NewTV.NumHDMIInputs;
                 tv.NumUSBPorts= NewTV.NumUSBPorts;
@@ -85,8 +88,6 @@ namespace WAPIProject.Controllers
                 product.RateValue = Tv.RateValue;
                 product.BrandId = Tv.BrandId;
                 product.CategoryId = Tv.CategoryId;
-                product.CartItemId = Tv.CartItemId;
-                product.ProfitId = Tv.ProfitId;
                 product.StoreId = Tv.StoreId;
 
                 await unitOfWorkRepository.Product.AddAsync(product);
@@ -284,6 +285,65 @@ namespace WAPIProject.Controllers
                  .TV
                  .FindAllAsync(b => b.MainProduct.PriceAfterDiscount < b.MainProduct.Price, new[] { "MainProduct" });
             return Ok(tvsfilter);
+        }
+
+
+        [HttpGet("FilterByStore")]
+        public async Task<IActionResult> FilterByStore(string storename)
+        {
+            int id = unitOfWorkRepository.Store.getbyname(storename);
+            List<TV> tvsfilter = (List<TV>)await unitOfWorkRepository
+                .TV
+                .FindAllAsync(m => m.MainProduct.StoreId == id, new[] { "MainProduct" });
+
+            return Ok(tvsfilter);
+        }
+
+        [HttpGet("FilterWithSpecificDiscount")]
+        public async Task<IActionResult> FilterWithSpecificDiscountAsync(int dicount)
+        {
+            #region CalculatePersent
+            //List<Mobile> listwithdiscount = new List<Mobile>();
+
+            //List<Mobile> MobilesFilter = unitOfWorkRepository.Mobile.FindAll(new[] { "MainProduct" }).ToList();
+
+            //foreach (Mobile mobile in MobilesFilter)
+            //{
+            //    double rest= (double)(mobile.MainProduct.Price-mobile.MainProduct.PriceAfterDiscount);
+            //    double rate = (rest / mobile.MainProduct.Price * 100);
+            //    int roundrate= (int)Math.Round(rate);
+            //    if(roundrate == dicount)
+            //    {
+            //        listwithdiscount.Add(mobile);
+            //    }
+            //} 
+            #endregion
+
+            List<TV> tvsfilter = (List<TV>)await unitOfWorkRepository
+                .TV
+                .FindAllAsync(m => m.MainProduct.Discount.PercentageOff == dicount, new[] { "MainProduct" });
+
+            return Ok(tvsfilter);
+        }
+
+        [HttpGet("RelatedTvsOfStor")]
+        public async Task<IActionResult> RelatedTvsOfStor(int id)
+        {
+            List<TV> topTVs = (List<TV>)await unitOfWorkRepository
+                .TV
+                .FindAllAsync(m => m.MainProduct.StoreId == id, 10, null, m => m.MainProduct.RateValue, OrderBy.Descending);
+            return Ok(topTVs);
+        }
+
+        [HttpGet("RelatedTvsOfBrand")]
+        public async Task<IActionResult> RelatedTvsOfBrand(string brandname)
+        {
+            List<TV> topTVs = (List<TV>)await unitOfWorkRepository
+                .TV
+                .FindAllAsync(m => m.MainProduct.BrandName == brandname, 10, null, m => m.MainProduct.RateValue, OrderBy.Descending);
+
+
+            return Ok(topTVs);
         }
     }
 }

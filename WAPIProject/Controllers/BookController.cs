@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
+
+using Reprository.EF.Criteria;
 using System.Reflection;
 using WAPIProject.DTO;
 
@@ -16,7 +18,7 @@ namespace WAPIProject.Controllers
         {
             this.unitOfWorkRepository = unitOfWorkRepository;
         }
-        [HttpGet]
+        [HttpGet("GetBooks")]
         public IActionResult GetBooks()
         {
             return Ok(unitOfWorkRepository.Book.FindAll(new[] { "MainProduct" }));
@@ -27,7 +29,7 @@ namespace WAPIProject.Controllers
 
             return Ok(await unitOfWorkRepository.Book.FindAsync(m => m.MainProductId == id, new[] { "MainProduct" }));
         }
-        [HttpPut]
+        [HttpPut("UpdateBookAsync")]
         public async Task<IActionResult> UpdateBookAsync(BookDTO NewBook)
         {
             if (ModelState.IsValid)
@@ -44,8 +46,6 @@ namespace WAPIProject.Controllers
                 book.MainProduct.RateValue = NewBook.RateValue;
                 book.MainProduct.BrandId = NewBook.BrandId;
                 book.MainProduct.CategoryId = NewBook.CategoryId;
-                book.MainProduct.CartItemId = NewBook.CartItemId;
-                book.MainProduct.ProfitId = NewBook.ProfitId;
                 book.MainProduct.StoreId = NewBook.StoreId;
 
                 book.Weight = NewBook.Weight;
@@ -65,7 +65,7 @@ namespace WAPIProject.Controllers
             return BadRequest(ModelState);
 
         }
-        [HttpPost]
+        [HttpPost("AddBook")]
         public async Task<IActionResult> AddBook(BookDTO NewBook)
         {
 
@@ -80,8 +80,6 @@ namespace WAPIProject.Controllers
                 product.RateValue = NewBook.RateValue;
                 product.BrandId = NewBook.BrandId;
                 product.CategoryId = NewBook.CategoryId;
-                product.CartItemId = NewBook.CartItemId;
-                product.ProfitId = NewBook.ProfitId;
                 product.StoreId = NewBook.StoreId;
 
                 await unitOfWorkRepository.Product.AddAsync(product);
@@ -224,6 +222,75 @@ namespace WAPIProject.Controllers
         }
 
 
+        [HttpGet("FilterByBrandName")]
+        public async Task<IActionResult> FilterByBrandName(string brandname)
+        {
+
+            List<Book> booksfilter = (List<Book>)await unitOfWorkRepository
+                 .Book
+                 .FindAllAsync(b => b.MainProduct.BrandName == brandname, new[] { "MainProduct" });
+            return Ok(booksfilter);
+        }
+
+        [HttpGet("FilterByStore")]
+        public async Task<IActionResult> FilterByStore(string storename)
+        {
+            int id = unitOfWorkRepository.Store.getbyname(storename);
+            List<Book> booksfilter = (List<Book>)await unitOfWorkRepository
+                .Book
+                .FindAllAsync(m => m.MainProduct.StoreId == id, new[] { "MainProduct" });
+
+            return Ok(booksfilter);
+        }
+
+        [HttpGet("FilterWithSpecificDiscount")]
+        public async Task<IActionResult> FilterWithSpecificDiscountAsync(int dicount)
+        {
+            #region CalculatePersent
+            //List<Mobile> listwithdiscount = new List<Mobile>();
+
+            //List<Mobile> MobilesFilter = unitOfWorkRepository.Mobile.FindAll(new[] { "MainProduct" }).ToList();
+
+            //foreach (Mobile mobile in MobilesFilter)
+            //{
+            //    double rest= (double)(mobile.MainProduct.Price-mobile.MainProduct.PriceAfterDiscount);
+            //    double rate = (rest / mobile.MainProduct.Price * 100);
+            //    int roundrate= (int)Math.Round(rate);
+            //    if(roundrate == dicount)
+            //    {
+            //        listwithdiscount.Add(mobile);
+            //    }
+            //} 
+            #endregion
+
+            List<Book> booksfilter = (List<Book>)await unitOfWorkRepository
+                .Book
+                .FindAllAsync(m => m.MainProduct.Discount.PercentageOff==dicount, new[] { "MainProduct" });
+
+            return Ok(booksfilter);
+        }
+
+        [HttpGet("RelatedBooksOfStor")]
+        public async Task<IActionResult> RelatedBooksOfStor(int id)
+        {
+            List<Book> topBooks = (List<Book>)await unitOfWorkRepository
+                .Book
+                .FindAllAsync(m => m.MainProduct.StoreId == id, 10, null, m => m.MainProduct.RateValue, OrderBy.Descending);
+            return Ok(topBooks);
+        }
+
+        [HttpGet("RelatedBooksOfBrand")]
+        public async Task<IActionResult> RelatedBooksOfBrand(string brandname)
+        {
+            List<Book> topBooks = (List<Book>)await unitOfWorkRepository
+                .Book
+                .FindAllAsync(m => m.MainProduct.BrandName == brandname, 10, null, m => m.MainProduct.RateValue, OrderBy.Descending);
+
+
+            return Ok(topBooks);
+        }
+
+        
 
 
     }

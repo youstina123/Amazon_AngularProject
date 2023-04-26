@@ -24,7 +24,9 @@ namespace Reprository.Core.Models
         //public int Quantity { get; set; }
         [Column(TypeName = "date")] 
         public DateTime OrderDate { get; set; }
-        public decimal TotalPrice { get; set; }
+
+        public double TotalPrice { get; set; }
+
         public bool IsDeleted { get; set; }
         public bool IsReturned { get; set; }
         public ShippingState shippingState { get; set; }

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
+
+using Reprository.EF.Criteria;
 using WAPIProject.DTO;
 
 namespace WAPIProject.Controllers
@@ -28,12 +30,11 @@ namespace WAPIProject.Controllers
                 product.Price = NewComputer.Price;
                 product.Quantity = NewComputer.Quantity;
                 product.RateValue = NewComputer.RateValue;
-                product.CartItemId = NewComputer.CartItemId;
                 product.StoreId = NewComputer.StoreId;
                 product.BrandId = NewComputer.BrandId;
-                product.ProfitId = NewComputer.ProfitId;
                 product.CategoryId = NewComputer.CategoryId;
                 await unitOfWorkRepository.Product.AddAsync(product);
+
                 Computer computer = new Computer();
                 computer.RAM = NewComputer.RAM;
                 computer.USBPorts = NewComputer.USBPorts;
@@ -46,7 +47,7 @@ namespace WAPIProject.Controllers
                 computer.HasMouse = NewComputer.HasMouse;
                 computer.HasTouchscreen = NewComputer.HasTouchscreen;
                 computer.HDMIOutputs = NewComputer.HDMIOutputs;
-                computer.IsDeleted = NewComputer.IsDeletede;
+
                 computer.Material = NewComputer.Material;
                 computer.Weight = NewComputer.Weight;
                 computer.Model = NewComputer.Model;
@@ -58,7 +59,6 @@ namespace WAPIProject.Controllers
             }
             return BadRequest(ModelState);
         }
-
 
 
         [HttpPut("UpdateComputer")]
@@ -76,11 +76,11 @@ namespace WAPIProject.Controllers
                 computer.MainProduct.PriceAfterDiscount = NewComputer.PriceAfterDiscount;
                 computer.MainProduct.Quantity = NewComputer.Quantity;
                 computer.MainProduct.RateValue = NewComputer.RateValue;
-                computer.MainProduct.ProfitId = NewComputer.ProfitId;
-                computer.MainProduct.CartItemId = NewComputer.CartItemId;
                 computer.MainProduct.BrandId = NewComputer.BrandId;
                 computer.MainProduct.CategoryId = NewComputer.CategoryId;
                 computer.MainProduct.StoreId = NewComputer.StoreId;
+
+               
                 computer.RAM = NewComputer.RAM;
                 computer.USBPorts = NewComputer.USBPorts;
                 computer.Processor = NewComputer.Processor;
@@ -92,11 +92,12 @@ namespace WAPIProject.Controllers
                 computer.HasMouse = NewComputer.HasMouse;
                 computer.HasTouchscreen = NewComputer.HasTouchscreen;
                 computer.HDMIOutputs = NewComputer.HDMIOutputs;
-                computer.IsDeleted= NewComputer.IsDeletede;
+
                 computer.Material = NewComputer.Material;
                 computer.Weight = NewComputer.Weight;
                 computer.Model = NewComputer.Model;
                 computer.OperatingSystem = NewComputer.OperatingSystem;
+                unitOfWorkRepository.Computer.Update(computer);
 
 
                 return Ok("Updated");
@@ -104,8 +105,6 @@ namespace WAPIProject.Controllers
             return BadRequest(ModelState);
 
         }
-
-
 
 
         [HttpDelete("DeleteComputer")]
@@ -258,7 +257,6 @@ namespace WAPIProject.Controllers
         }
 
 
-
         [HttpGet("FilterByOperatingSystem")]
         public async Task<IActionResult> FilterByOperatingSystem(string OperatingSystem)
         {
@@ -326,5 +324,65 @@ namespace WAPIProject.Controllers
 
             return Ok(computerFilter);
         }
+
+
+        [HttpGet("FilterByStore")]
+        public async Task<IActionResult> FilterByStore(string storename)
+        {
+            int id = unitOfWorkRepository.Store.getbyname(storename);
+            List<Computer> computersfilter = (List<Computer>)await unitOfWorkRepository
+                .Computer
+                .FindAllAsync(m => m.MainProduct.StoreId == id, new[] { "MainProduct" });
+
+            return Ok(computersfilter);
+        }
+
+        [HttpGet("FilterWithSpecificDiscount")]
+        public async Task<IActionResult> FilterWithSpecificDiscountAsync(int dicount)
+        {
+            #region CalculatePersent
+            //List<Mobile> listwithdiscount = new List<Mobile>();
+
+            //List<Mobile> MobilesFilter = unitOfWorkRepository.Mobile.FindAll(new[] { "MainProduct" }).ToList();
+
+            //foreach (Mobile mobile in MobilesFilter)
+            //{
+            //    double rest= (double)(mobile.MainProduct.Price-mobile.MainProduct.PriceAfterDiscount);
+            //    double rate = (rest / mobile.MainProduct.Price * 100);
+            //    int roundrate= (int)Math.Round(rate);
+            //    if(roundrate == dicount)
+            //    {
+            //        listwithdiscount.Add(mobile);
+            //    }
+            //} 
+            #endregion
+
+            List<Computer> computersfilter = (List<Computer>)await unitOfWorkRepository
+                .Computer
+                .FindAllAsync(m => m.MainProduct.Discount.PercentageOff == dicount, new[] { "MainProduct" });
+
+            return Ok(computersfilter);
+        }
+
+        [HttpGet("RelatedComputersOfStor")]
+        public async Task<IActionResult> RelatedComputersOfStor(int id)
+        {
+            List<Computer> topComputer = (List<Computer>)await unitOfWorkRepository
+                .Computer
+                .FindAllAsync(m => m.MainProduct.StoreId == id, 10, null, m => m.MainProduct.RateValue, OrderBy.Descending);
+            return Ok(topComputer);
+        }
+
+        [HttpGet("RelatedComputersOfBrand")]
+        public async Task<IActionResult> RelatedComputersOfBrand(string brandname)
+        {
+            List<Computer> topComputer = (List<Computer>)await unitOfWorkRepository
+                .Computer
+                .FindAllAsync(m => m.MainProduct.BrandName == brandname, 10, null, m => m.MainProduct.RateValue, OrderBy.Descending);
+
+
+            return Ok(topComputer);
+        }
+
     }
 }

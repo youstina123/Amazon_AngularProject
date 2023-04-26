@@ -186,6 +186,20 @@ namespace WAPIProject.Controllers
             return Ok(category);
         }
 
+
+        [HttpPost("AddBrand")]
+        public IActionResult AddBrand(BrandDTO newBrand)
+        {
+            Brand brand =new Brand();
+            brand.Name = newBrand.Name;
+            brand.Product_Name = newBrand.Product_Name;
+            brand.CategoryId = newBrand.CategoryId;
+
+            unitOfWorkRepository.Brand.Add(brand);
+            return Ok(brand);
+        }
+
+
         [HttpGet("GetAdminProfit")]
         public IActionResult GetAdminProfit()
         {

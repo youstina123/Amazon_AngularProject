@@ -31,9 +31,6 @@ namespace WAPIProject.DTO
 
         public int? BrandId { get; set; }
         public int? CategoryId { get; set; }
-        public int? CartItemId { get; set; }
-
-        public int? ProfitId { get; set; }
 
         public int? StoreId { get; set; }
     }

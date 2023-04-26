@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Reprository.Core.Interfaces;
 using Reprository.Core.Models;
+
+using Reprository.EF.Criteria;
+
 using WAPIProject.DTO;
 
 namespace WAPIProject.Controllers
@@ -29,15 +32,13 @@ namespace WAPIProject.Controllers
                 product.Price = Newclothing.Price;
                 product.Quantity = Newclothing.Quantity;
                 product.RateValue = Newclothing.RateValue;
-                product.CartItemId = Newclothing.CartItemId;
                 product.StoreId = Newclothing.StoreId;
                 product.BrandId = Newclothing.BrandId;
-                product.ProfitId = Newclothing.ProfitId;
                 product.CategoryId = Newclothing.CategoryId;
                 await unitOfWorkRepository.Product.AddAsync(product);
+
                 Clothing clothing = new Clothing();
                 clothing.SleeveStyle = Newclothing.SleeveStyle;
-                clothing.IsDeleted = Newclothing.IsDeletede;
                 clothing.Style = Newclothing.Style;
                 clothing.ManufacturerCountry = Newclothing.ManufacturerCountry;
                 clothing.Season = Newclothing.Season;
@@ -66,12 +67,10 @@ namespace WAPIProject.Controllers
                 clothing.MainProduct.Quantity = Newclothing.Quantity;
                 clothing.MainProduct.RateValue = Newclothing.RateValue;
                 clothing.MainProduct.BrandId = Newclothing.BrandId;
-                clothing.MainProduct.CartItemId = Newclothing.CartItemId;
-                clothing.MainProduct.ProfitId = Newclothing.ProfitId;
                 clothing.MainProduct.CategoryId = Newclothing.CategoryId;
                 clothing.MainProduct.StoreId = Newclothing.StoreId;
+
                 clothing.SleeveStyle = Newclothing.SleeveStyle;
-                clothing.IsDeleted = Newclothing.IsDeletede;
                 clothing.Style = Newclothing.Style;
                 clothing.ManufacturerCountry = Newclothing.ManufacturerCountry;
                 clothing.Season = Newclothing.Season;
@@ -188,5 +187,65 @@ namespace WAPIProject.Controllers
                 .FindAllAsync(b => b.SleeveStyle == style, new[] { "MainProduct" });
             return Ok(Clothingfilter);
         }
+
+
+        [HttpGet("FilterByStore")]
+        public async Task<IActionResult> FilterByStore(string storename)
+        {
+            int id = unitOfWorkRepository.Store.getbyname(storename);
+            List<Clothing> clothsfilter = (List<Clothing>)await unitOfWorkRepository
+                .Clothing
+                .FindAllAsync(m => m.MainProduct.StoreId == id, new[] { "MainProduct" });
+
+            return Ok(clothsfilter);
+        }
+
+        [HttpGet("FilterWithSpecificDiscount")]
+        public async Task<IActionResult> FilterWithSpecificDiscountAsync(int dicount)
+        {
+            #region CalculatePersent
+            //List<Mobile> listwithdiscount = new List<Mobile>();
+
+            //List<Mobile> MobilesFilter = unitOfWorkRepository.Mobile.FindAll(new[] { "MainProduct" }).ToList();
+
+            //foreach (Mobile mobile in MobilesFilter)
+            //{
+            //    double rest= (double)(mobile.MainProduct.Price-mobile.MainProduct.PriceAfterDiscount);
+            //    double rate = (rest / mobile.MainProduct.Price * 100);
+            //    int roundrate= (int)Math.Round(rate);
+            //    if(roundrate == dicount)
+            //    {
+            //        listwithdiscount.Add(mobile);
+            //    }
+            //} 
+            #endregion
+
+            List<Clothing> clothsfilter = (List<Clothing>)await unitOfWorkRepository
+                .Clothing
+                .FindAllAsync(m => m.MainProduct.Discount.PercentageOff == dicount, new[] { "MainProduct" });
+
+            return Ok(clothsfilter);
+        }
+
+        [HttpGet("RelatedBooksOfStor")]
+        public async Task<IActionResult> RelatedBooksOfStor(int id)
+        {
+            List<Clothing> topClothing = (List<Clothing>)await unitOfWorkRepository
+                .Clothing
+                .FindAllAsync(m => m.MainProduct.StoreId == id, 10, null, m => m.MainProduct.RateValue, OrderBy.Descending);
+            return Ok(topClothing);
+        }
+
+        [HttpGet("RelatedBooksOfBrand")]
+        public async Task<IActionResult> RelatedBooksOfBrand(string brandname)
+        {
+            List<Clothing> topClothing = (List<Clothing>)await unitOfWorkRepository
+                .Clothing
+                .FindAllAsync(m => m.MainProduct.BrandName == brandname, 10, null, m => m.MainProduct.RateValue, OrderBy.Descending);
+
+
+            return Ok(topClothing);
+        }
+
     }
 }

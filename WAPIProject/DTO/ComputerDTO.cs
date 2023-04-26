@@ -29,13 +29,8 @@ namespace WAPIProject.DTO
         public bool HasKeyboard { get; set; }
         public bool HasMouse { get; set; }
 
-        public bool IsDeletede { get; set; }
         public int? BrandId { get; set; }
         public int? CategoryId { get; set; }
-        public int? CartItemId { get; set; }
-
-        public int? ProfitId { get; set; }
-
         public int? StoreId { get; set; }
     }
 }

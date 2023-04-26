@@ -19,13 +19,10 @@ namespace WAPIProject.DTO
         public string? Season { get; set; }
         public string? ManufacturerCountry { get; set; }
         public string? SleeveStyle { get; set; }
-        public bool IsDeletede { get; set; }
+
 
         public int? BrandId { get; set; }
         public int? CategoryId { get; set; }
-        public int? CartItemId { get; set; }
-
-        public int? ProfitId { get; set; }
 
         public int? StoreId { get; set; }
     }

@@ -1,11 +1,11 @@
 {
   "Files": [
     {
-      "Id": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\microsoft-signalr\\signalr.js",
+      "Id": "D:\\New folder\\WAPIProject\\wwwroot\\microsoft-signalr\\signalr.js",
       "PackagePath": "staticwebassets\\microsoft-signalr\\signalr.js"
     },
     {
-      "Id": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\microsoft-signalr\\signalr.min.js",
+      "Id": "D:\\New folder\\WAPIProject\\wwwroot\\microsoft-signalr\\signalr.min.js",
       "PackagePath": "staticwebassets\\microsoft-signalr\\signalr.min.js"
     },
     {

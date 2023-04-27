@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Teax0lcTHDXVmFqCDIGD0+K7RATUUhRJBALRgjNofws=",
+  "Hash": "MeB/P5CkA3b/77anJciawNL5/h6NAx2/T1WjB/kkrjo=",
   "Source": "WAPIProject",
   "BasePath": "_content/WAPIProject",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "WAPIProject\\wwwroot",
       "Source": "WAPIProject",
-      "ContentRoot": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\",
+      "ContentRoot": "D:\\New folder\\WAPIProject\\wwwroot\\",
       "BasePath": "_content/WAPIProject",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\microsoft-signalr\\signalr.js",
+      "Identity": "D:\\New folder\\WAPIProject\\wwwroot\\microsoft-signalr\\signalr.js",
       "SourceId": "WAPIProject",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\",
+      "ContentRoot": "D:\\New folder\\WAPIProject\\wwwroot\\",
       "BasePath": "_content/WAPIProject",
       "RelativePath": "microsoft-signalr/signalr.js",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\microsoft-signalr\\signalr.js"
     },
     {
-      "Identity": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\microsoft-signalr\\signalr.min.js",
+      "Identity": "D:\\New folder\\WAPIProject\\wwwroot\\microsoft-signalr\\signalr.min.js",
       "SourceId": "WAPIProject",
       "SourceType": "Discovered",
-      "ContentRoot": "F:\\Amazon3\\Amazon_AngularProject\\WAPIProject\\wwwroot\\",
+      "ContentRoot": "D:\\New folder\\WAPIProject\\wwwroot\\",
       "BasePath": "_content/WAPIProject",
       "RelativePath": "microsoft-signalr/signalr.min.js",
       "AssetKind": "All",

@@ -16,6 +16,7 @@ namespace Reprository.EF.Repositories
         public IBaseRepository<ApplicationUser> ApplicationUser { get; private set; }
         public IBaseRepository<Customer> Customer { get; private set; }
         public IBaseRepository<Category> Category { get; private set; }
+        public IBaseRepository<Image> Image { get; private set; }
         public IProductRepository Product { get; private set; }   
         public IProfitRepository Profit { get; private set; }
         public IStoreRepository Store { get; private set; }
@@ -65,7 +66,7 @@ namespace Reprository.EF.Repositories
             Profit=new ProfitRepository(this.context);
             Review= new BaseRepository<Review>(this.context);
             Discount=new BaseRepository<Discount>(this.context);
-
+            Image=new BaseRepository<Image>(this.context);
             Brand=new BaseRepository<Brand>(this.context);
 
         }

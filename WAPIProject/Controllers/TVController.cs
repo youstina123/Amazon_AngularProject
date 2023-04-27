@@ -107,6 +107,16 @@ namespace WAPIProject.Controllers
                 tv.HasBluetooth = Tv.HasBluetooth;
                 tv.HasWIFI = Tv.HasWIFI;
 
+                for (int index = 0; index < Tv.Images.Count(); index++)
+                {
+                    using var imageStream = new MemoryStream();
+                    Tv.Images[index].CopyTo(imageStream);
+                    Image image = new Image();
+                    image.ImageSource = imageStream.ToArray();
+                    image.ProductId = product.Id;
+                    unitOfWorkRepository.Image.Add(image);
+                }
+
                 await unitOfWorkRepository.TV.AddAsync(tv);
 
                 return new StatusCodeResult(StatusCodes.Status201Created);

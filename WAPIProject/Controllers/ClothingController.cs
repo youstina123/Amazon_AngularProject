@@ -44,6 +44,16 @@ namespace WAPIProject.Controllers
                 clothing.Season = Newclothing.Season;
                 clothing.Gender = Newclothing.Gender;
                 clothing.Size = Newclothing.Size;
+
+                for (int index = 0; index < Newclothing.Images.Count(); index++)
+                {
+                    using var imageStream = new MemoryStream();
+                    Newclothing.Images[index].CopyTo(imageStream);
+                    Image image = new Image();
+                    image.ImageSource = imageStream.ToArray();
+                    image.ProductId = product.Id;
+                    unitOfWorkRepository.Image.Add(image);
+                }
                 await unitOfWorkRepository.Clothing.AddAsync(clothing);
                 return new StatusCodeResult(StatusCodes.Status201Created);
             }

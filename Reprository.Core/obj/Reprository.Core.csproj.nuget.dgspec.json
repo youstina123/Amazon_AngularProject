@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Amazon3\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj": {}
+    "D:\\New folder\\Reprository.Core\\Reprository.Core.csproj": {}
   },
   "projects": {
-    "F:\\Amazon3\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj": {
+    "D:\\New folder\\Reprository.Core\\Reprository.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Amazon3\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj",
+        "projectUniqueName": "D:\\New folder\\Reprository.Core\\Reprository.Core.csproj",
         "projectName": "Reprository.Core",
-        "projectPath": "F:\\Amazon3\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj",
+        "projectPath": "D:\\New folder\\Reprository.Core\\Reprository.Core.csproj",
         "packagesPath": "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\",
-        "outputPath": "F:\\Amazon3\\Amazon_AngularProject\\Reprository.Core\\obj\\",
+        "outputPath": "D:\\New folder\\Reprository.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

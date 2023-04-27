@@ -9,6 +9,8 @@ namespace WAPIProject.DTO
         public string Name { get; set; }
         public string BrandName { get; set; }
         public string Description { get; set; }
+        public List<IFormFile> Images { get; set; }
+
         public double Price { get; set; }
         public double? PriceAfterDiscount { get; set; }
         public int Quantity { get; set; }

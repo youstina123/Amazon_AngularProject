@@ -97,6 +97,16 @@ namespace WAPIProject.Controllers
                 book.Type = NewBook.Type;
                 book.Awards = NewBook.Awards;
 
+                for (int index = 0; index < NewBook.Images.Count(); index++)
+                {
+                    using var imageStream = new MemoryStream();
+                    NewBook.Images[index].CopyTo(imageStream);
+                    Image image = new Image();
+                    image.ImageSource = imageStream.ToArray();
+                    image.ProductId = product.Id;
+                    unitOfWorkRepository.Image.Add(image);
+                }
+
                 await unitOfWorkRepository.Book.AddAsync(book);
 
                 return new StatusCodeResult(StatusCodes.Status201Created);

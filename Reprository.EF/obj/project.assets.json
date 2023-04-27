@@ -4342,11 +4342,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Amazon3\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj",
+      "projectUniqueName": "D:\\New folder\\Reprository.EF\\Reprository.EF.csproj",
       "projectName": "Reprository.EF",
-      "projectPath": "F:\\Amazon3\\Amazon_AngularProject\\Reprository.EF\\Reprository.EF.csproj",
+      "projectPath": "D:\\New folder\\Reprository.EF\\Reprository.EF.csproj",
       "packagesPath": "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\",
-      "outputPath": "F:\\Amazon3\\Amazon_AngularProject\\Reprository.EF\\obj\\",
+      "outputPath": "D:\\New folder\\Reprository.EF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4367,8 +4367,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "F:\\Amazon3\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj": {
-              "projectPath": "F:\\Amazon3\\Amazon_AngularProject\\Reprository.Core\\Reprository.Core.csproj"
+            "D:\\New folder\\Reprository.Core\\Reprository.Core.csproj": {
+              "projectPath": "D:\\New folder\\Reprository.Core\\Reprository.Core.csproj"
             }
           }
         }

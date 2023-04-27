@@ -14,6 +14,7 @@ namespace Reprository.Core.Interfaces
         IBaseRepository<Category> Category { get; }
         IBaseRepository<Payment> Payment { get; }
         IBaseRepository<Discount> Discount { get; }
+        IBaseRepository<Image> Image { get; }
         IBaseRepository<Rate> Rate { get; }
         IBaseRepository<Order> Order { get;}
         IProfitRepository Profit { get; }

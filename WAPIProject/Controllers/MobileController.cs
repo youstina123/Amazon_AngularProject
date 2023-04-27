@@ -104,6 +104,16 @@ namespace WAPIProject.Controllers
                 mobile1.OperatingSystem= mobile.OperatingSystem;
                 mobile1.Screentype= mobile.Screentype;
 
+                for (int index = 0; index < mobile.Images.Count(); index++)
+                {
+                    using var imageStream = new MemoryStream();
+                    mobile.Images[index].CopyTo(imageStream);
+                    Image image = new Image();
+                    image.ImageSource = imageStream.ToArray();
+                    image.ProductId = product.Id;
+                    unitOfWorkRepository.Image.Add(image);
+                }
+
                 await unitOfWorkRepository.Mobile.AddAsync(mobile1);
 
                 return new StatusCodeResult(StatusCodes.Status201Created);

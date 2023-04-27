@@ -53,6 +53,16 @@ namespace WAPIProject.Controllers
                 computer.Model = NewComputer.Model;
                 computer.OperatingSystem = NewComputer.OperatingSystem;
 
+                for (int index = 0; index < NewComputer.Images.Count(); index++)
+                {
+                    using var imageStream = new MemoryStream();
+                    NewComputer.Images[index].CopyTo(imageStream);
+                    Image image = new Image();
+                    image.ImageSource = imageStream.ToArray();
+                    image.ProductId = product.Id;
+                    unitOfWorkRepository.Image.Add(image);
+                }
+
                 await unitOfWorkRepository.Computer.AddAsync(computer);
 
                 return new StatusCodeResult(StatusCodes.Status201Created);

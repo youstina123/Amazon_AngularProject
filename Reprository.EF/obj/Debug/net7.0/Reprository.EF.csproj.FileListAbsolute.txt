@@ -202,3 +202,20 @@ F:\Amazon3\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\refint\Reprosit
 F:\Amazon3\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.pdb
 F:\Amazon3\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\Reprository.EF.genruntimeconfig.cache
 F:\Amazon3\Amazon_AngularProject\Reprository.EF\obj\Debug\net7.0\ref\Reprository.EF.dll
+D:\New folder\Reprository.EF\bin\Debug\net7.0\Reprository.EF.deps.json
+D:\New folder\Reprository.EF\bin\Debug\net7.0\Reprository.EF.runtimeconfig.json
+D:\New folder\Reprository.EF\bin\Debug\net7.0\Reprository.EF.dll
+D:\New folder\Reprository.EF\bin\Debug\net7.0\Reprository.EF.pdb
+D:\New folder\Reprository.EF\bin\Debug\net7.0\Reprository.Core.dll
+D:\New folder\Reprository.EF\bin\Debug\net7.0\Reprository.Core.pdb
+D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.csproj.AssemblyReference.cache
+D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.GeneratedMSBuildEditorConfig.editorconfig
+D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.AssemblyInfoInputs.cache
+D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.AssemblyInfo.cs
+D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.csproj.CoreCompileInputs.cache
+D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.csproj.CopyComplete
+D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.dll
+D:\New folder\Reprository.EF\obj\Debug\net7.0\refint\Reprository.EF.dll
+D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.pdb
+D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.genruntimeconfig.cache
+D:\New folder\Reprository.EF\obj\Debug\net7.0\ref\Reprository.EF.dll

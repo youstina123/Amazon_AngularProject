@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Reprository.Core.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace WAPIProject.DTO
 {
@@ -16,7 +17,7 @@ namespace WAPIProject.DTO
         public string StoreName { get; set; }
         public string StoreAddress { get; set; }
         public string StoreDescription { get; set; }
-        public string StoreSpecialty { get; set; }
+        public int StoreSpecialty { get; set; }
         public int Categoryid { get; set; }
         public IFormFile? StoreImage { get; set; }
         public IFormFile? VendorImage { get; set; }

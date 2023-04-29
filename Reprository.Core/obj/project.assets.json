@@ -2517,11 +2517,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\New folder\\Reprository.Core\\Reprository.Core.csproj",
+      "projectUniqueName": "D:\\Amazon4\\Reprository.Core\\Reprository.Core.csproj",
       "projectName": "Reprository.Core",
-      "projectPath": "D:\\New folder\\Reprository.Core\\Reprository.Core.csproj",
+      "projectPath": "D:\\Amazon4\\Reprository.Core\\Reprository.Core.csproj",
       "packagesPath": "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\",
-      "outputPath": "D:\\New folder\\Reprository.Core\\obj\\",
+      "outputPath": "D:\\Amazon4\\Reprository.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

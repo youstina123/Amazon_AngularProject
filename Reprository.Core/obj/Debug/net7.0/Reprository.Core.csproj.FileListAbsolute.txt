@@ -154,3 +154,15 @@ D:\New folder\Reprository.Core\obj\Debug\net7.0\Reprository.Core.dll
 D:\New folder\Reprository.Core\obj\Debug\net7.0\refint\Reprository.Core.dll
 D:\New folder\Reprository.Core\obj\Debug\net7.0\Reprository.Core.pdb
 D:\New folder\Reprository.Core\obj\Debug\net7.0\ref\Reprository.Core.dll
+D:\Amazon4\Reprository.Core\bin\Debug\net7.0\Reprository.Core.deps.json
+D:\Amazon4\Reprository.Core\bin\Debug\net7.0\Reprository.Core.dll
+D:\Amazon4\Reprository.Core\bin\Debug\net7.0\Reprository.Core.pdb
+D:\Amazon4\Reprository.Core\obj\Debug\net7.0\Reprository.Core.csproj.AssemblyReference.cache
+D:\Amazon4\Reprository.Core\obj\Debug\net7.0\Reprository.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Amazon4\Reprository.Core\obj\Debug\net7.0\Reprository.Core.AssemblyInfoInputs.cache
+D:\Amazon4\Reprository.Core\obj\Debug\net7.0\Reprository.Core.AssemblyInfo.cs
+D:\Amazon4\Reprository.Core\obj\Debug\net7.0\Reprository.Core.csproj.CoreCompileInputs.cache
+D:\Amazon4\Reprository.Core\obj\Debug\net7.0\Reprository.Core.dll
+D:\Amazon4\Reprository.Core\obj\Debug\net7.0\refint\Reprository.Core.dll
+D:\Amazon4\Reprository.Core\obj\Debug\net7.0\Reprository.Core.pdb
+D:\Amazon4\Reprository.Core\obj\Debug\net7.0\ref\Reprository.Core.dll

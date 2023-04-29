@@ -30,19 +30,21 @@ namespace WAPIProject.Controllers
             this.config = config;
         }
         [HttpPost("register")]//api/account/register
-        public async Task<IActionResult> Register([FromForm]RegisterUserDto userDTO)
+        public async Task<IActionResult> Register([FromBody]RegisterUserDto userDTO)
         {
             if (ModelState.IsValid)
             {
                 //create  ==>add user db
                 using var dataStream = new MemoryStream(); // Save Store Image as Array of byte 
-
                 userDTO.Image.CopyTo(dataStream);
+
                 ApplicationUser userModel = new ApplicationUser();
                 userModel.Email = userDTO.Email;
                 userModel.UserName = userDTO.UserName;
                 userModel.PhoneNumber = userDTO.PhoneNumber;
-                userModel.image=dataStream.ToArray();
+                userModel.image = dataStream.ToArray();
+                    //userDTO.Image;
+
                 IdentityResult result = await userManager.CreateAsync(userModel, userDTO.Password);
                 if (result.Succeeded)
                 {
@@ -63,7 +65,7 @@ namespace WAPIProject.Controllers
         }
 
         [HttpPost("vendorRegister")]
-        public async Task<IActionResult> VendorRegestration([FromForm]VendorRegaestrationDto vendorRegester)
+        public async Task<IActionResult> VendorRegestration([FromBody]VendorRegaestrationDto vendorRegester)
         {
             if (ModelState.IsValid)
             {
@@ -104,6 +106,7 @@ namespace WAPIProject.Controllers
                 store.Description = vendorRegester.StoreDescription;
                 store.Country = vendorRegester.Country;
                 store.City = vendorRegester.City;
+                store.specialty =(Specialty)vendorRegester.StoreSpecialty;
                 store.IsConfirmed = false;
                 store.CategoryId = vendorRegester.Categoryid;
                 store.Image = storeDataStream.ToArray();

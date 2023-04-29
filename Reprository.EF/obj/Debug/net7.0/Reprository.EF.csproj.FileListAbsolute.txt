@@ -219,3 +219,20 @@ D:\New folder\Reprository.EF\obj\Debug\net7.0\refint\Reprository.EF.dll
 D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.pdb
 D:\New folder\Reprository.EF\obj\Debug\net7.0\Reprository.EF.genruntimeconfig.cache
 D:\New folder\Reprository.EF\obj\Debug\net7.0\ref\Reprository.EF.dll
+D:\Amazon4\Reprository.EF\bin\Debug\net7.0\Reprository.EF.deps.json
+D:\Amazon4\Reprository.EF\bin\Debug\net7.0\Reprository.EF.runtimeconfig.json
+D:\Amazon4\Reprository.EF\bin\Debug\net7.0\Reprository.EF.dll
+D:\Amazon4\Reprository.EF\bin\Debug\net7.0\Reprository.EF.pdb
+D:\Amazon4\Reprository.EF\bin\Debug\net7.0\Reprository.Core.dll
+D:\Amazon4\Reprository.EF\bin\Debug\net7.0\Reprository.Core.pdb
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\Reprository.EF.csproj.AssemblyReference.cache
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\Reprository.EF.GeneratedMSBuildEditorConfig.editorconfig
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\Reprository.EF.AssemblyInfoInputs.cache
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\Reprository.EF.AssemblyInfo.cs
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\Reprository.EF.csproj.CoreCompileInputs.cache
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\Reprository.EF.csproj.CopyComplete
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\Reprository.EF.dll
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\refint\Reprository.EF.dll
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\Reprository.EF.pdb
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\Reprository.EF.genruntimeconfig.cache
+D:\Amazon4\Reprository.EF\obj\Debug\net7.0\ref\Reprository.EF.dll

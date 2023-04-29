@@ -4844,11 +4844,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\New folder\\WAPIProject\\WAPIProject.csproj",
+      "projectUniqueName": "D:\\Amazon4\\WAPIProject\\WAPIProject.csproj",
       "projectName": "WAPIProject",
-      "projectPath": "D:\\New folder\\WAPIProject\\WAPIProject.csproj",
+      "projectPath": "D:\\Amazon4\\WAPIProject\\WAPIProject.csproj",
       "packagesPath": "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\",
-      "outputPath": "D:\\New folder\\WAPIProject\\obj\\",
+      "outputPath": "D:\\Amazon4\\WAPIProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4869,8 +4869,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\New folder\\Reprository.EF\\Reprository.EF.csproj": {
-              "projectPath": "D:\\New folder\\Reprository.EF\\Reprository.EF.csproj"
+            "D:\\Amazon4\\Reprository.EF\\Reprository.EF.csproj": {
+              "projectPath": "D:\\Amazon4\\Reprository.EF\\Reprository.EF.csproj"
             }
           }
         }

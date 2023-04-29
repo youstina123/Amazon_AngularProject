@@ -19,56 +19,7 @@ namespace WAPIProject.Controllers
             this.unitOfWorkRepository = unitOfWorkRepository;
         }
 
-        //[HttpGet("Notifications")]
-        //public IActionResult NewVendorNotifications()
-        //{
-        //    NotificationsDetailsDTO notifications;
-        //    List<NotificationsDetailsDTO> notificationsList = new List<NotificationsDetailsDTO>();
-
-        //    List<Store> store = (List<Store>)unitOfWorkRepository.Store.FindAll(h => h.IsConfermed == false);
-
-        //    List<string> VendorIds = new List<string>();
-
-        //    foreach (var item in store)
-        //    {
-        //        string appUserId = unitOfWorkRepository.Vendor.FindVendorId(item.Id);
-        //        VendorIds.Add(appUserId);
-        //    }
-        //    List<ApplicationUser> vendorList = new List<ApplicationUser>();
-
-        //    foreach (var item in VendorIds)
-        //    {
-        //        ApplicationUser vendor = unitOfWorkRepository.ApplicationUser.GetByIDString(item);
-        //        vendorList.Add(vendor);
-        //    }
-
-        //    foreach (var item in vendorList)
-        //    {
-        //        notifications = new NotificationsDetailsDTO();
-        //        notifications.VendorName = item.UserName;
-        //        notifications.PhoneNumber = item.PhoneNumber;
-        //        notifications.Email = item.Email;
-        //        notifications.Gender = item.gender.ToString();
-        //        notifications.Id = item.Id;
-        //        notificationsList.Add(notifications);
-
-        //    }
-        //    int index = 0;
-        //    foreach (var item in store)
-        //    {
-        //                     notifications = new NotificationsDetailsDTO();
-        //       
-
-        //        notificationsList[index].StoreName = item.Name;
-        //        notificationsList[index].StoreCountry = item.Country;
-        //        notificationsList[index].StoreCity = item.City;
-        //        notificationsList[index].StoreStreet = item.Street;
-        //        notificationsList[index].StoreDescription = item.Description.ToString();
-        //        index++;
-        //    }
-
-        //    return Ok(notificationsList);
-        //}
+        
 
         [HttpGet("VendorDetails")]
         public IActionResult NewVendorNotifications()

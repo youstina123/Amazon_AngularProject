@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nVHC6yAmHk8IOfq97sWN/phvlJnD8dXpZea9fBYRQotTSj3IjeCKCbtPQQZVHfQU76bb60XcSxwRRoNe3rIGBg==",
+  "dgSpecHash": "dHyE6m4IFvEbxjEb+kqLLYn6muZM98E8h5Nb3a9QILIDJoJrxizShTP/BigL7cofplNPszv8gdol+g+NfmBctA==",
   "success": true,
-  "projectFilePath": "D:\\New folder\\WAPIProject\\WAPIProject.csproj",
+  "projectFilePath": "D:\\Amazon4\\WAPIProject\\WAPIProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Al Lewaa Company\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

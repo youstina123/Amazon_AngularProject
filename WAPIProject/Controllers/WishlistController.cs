@@ -22,7 +22,7 @@ namespace WAPIProject.Controllers
             return Ok(unitOfWorkRepository.Wishlist.FindAll(new[] { "MainProduct" }));
         }
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetBookbyID(int id)
+        public async Task<IActionResult> GetWishlistbyID(int id)
         {
 
             return Ok(await unitOfWorkRepository.Wishlist.FindAsync(m => m.Id == id, new[] { "MainProduct" }));

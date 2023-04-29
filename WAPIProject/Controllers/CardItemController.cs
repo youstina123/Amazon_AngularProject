@@ -50,7 +50,7 @@ namespace WAPIProject.Controllers
 
             return Ok(unitOfWorkRepository
                 .CardItem
-                .FindAll(c => c.ShoppingCartId == id));
+                .FindAll(c => c.ShoppingCartId == id, new[] { "MainProduct" }));
         }
     }
     }
